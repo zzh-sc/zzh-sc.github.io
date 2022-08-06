@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>test</title>
+      <link href="/2022/08/06/test/"/>
+      <url>/2022/08/06/test/</url>
+      
+        <content type="html"><![CDATA[<p>markdown标记语言学习笔记<br>参考网站:<a href="https://www.runoob.com/markdown/md-link.html">菜鸟教程</a> <a href="https://markdown.com.cn/basic-syntax/">官方网站</a><br>文本编辑器：<a href="https://www.runoob.com/w3cnote/vscode-tutorial.html">VS code</a> 及其插件 Markdown Preview Enhanced<br>date:2022.7.21</p><span id="more"></span><h1 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h1><p>**标题(title)**：6个”#“ 到6个代表一到六级标题，“#”后边要跟一个“空格”符号。<br>eg:</p><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><strong>段落(paragraph)<strong>：Markdown段落没有特殊的格式，直接编写文字就好。段落的换行使用的是</strong>两个以上空格加上回车</strong>或者使用一个空行来表示重新开始一个段落。<br>eg:这是一个段落   </p><p>**字体(typeface)**：Markdown可以使用6种字体。  </p><blockquote><blockquote><p>eg:<br>斜体：<em>斜</em> 和 <em>斜体</em> ,<br>粗体：<strong>粗体</strong> 和 <strong>粗体</strong><br>斜体粗：<em><strong>斜体粗文本</strong></em> 和 <em><strong>斜体粗文本</strong></em>    </p></blockquote></blockquote><p><strong>分隔符</strong>:在同一行中用三个以上的*，-，_ 来建立一个分割符，<strong>同一行内不能有其他东西</strong> 。</p><blockquote><p>一</p></blockquote><hr><blockquote><p>二</p></blockquote><hr><blockquote><p>三</p></blockquote><hr><p><strong>删除线(Strikethrough)</strong>:如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~ 即可。</p><blockquote><p>eg: markdown_test 和 <del>markdown_test</del></p></blockquote><p><strong>下划线(ubderline)</strong>:下划线可以通过 HTML 的标签来实现，如下所示。</p><blockquote><p>eg:<u>这是下划线测试。</u></p></blockquote><p><strong>脚注(footnote)</strong>:脚注是对文本的补充说明,Markdown 脚注的格式如下:[^]</p><blockquote><p>eg:创建脚注格式类似这样 [^footnote]。<br>[^footnote]: 不仅要学习技术，更是刻苦的钻研！！！</p></blockquote><h1 id="DAY2"><a href="#DAY2" class="headerlink" title="DAY2"></a>DAY2</h1><p>date:2022.7.22<br><strong>列表(list)</strong>:Markdown 支持有序列表和无序列表。<br>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容。</p><ul><li>第一项</li></ul><ul><li>第二项</li></ul><ul><li>第三项</li></ul><p>有序列表使用数字并加上.号来表示，如：</p><ol><li>第一项</li><li>第二项</li><li>第三项</li></ol><p>列表嵌套：</p><ol><li>有序列表1<ul><li>无序列表1<ol><li>套娃中的套娃</li><li>套娃中的套娃</li></ol></li><li>无序列表2</li><li>无序列表3</li></ul></li><li>有序列表2<ul><li>无序列表1</li><li>无序列表2</li><li>无序列表3</li><li><strong>区块(block)</strong>:Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。<blockquote><p>这是区块测试，类似于tab</p><blockquote><p>tab*2</p><blockquote><p>tab*3</p></blockquote></blockquote></blockquote></li></ul></li></ol><p><strong>代码(code)</strong>:如果是段落上的一个函数或片段的代码可以用<strong>反引号</strong>把它包起来（&#96;），例如：</p><ol><li><code>printf()</code> 函数</li><li><pre><code> &lt;?php echo &#39;hello world&#39;; &gt;</code></pre></li></ol><p><strong>链接(link)</strong>:链接一个url,链接使用方法如下：<br><a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80">链接名称</a> 或者 &lt;链接地址&gt;<br>普通链接：</p><blockquote><ol><li><a href="https://www.runoob.com/w3cnote/vscode-tutorial.html">VS code</a></li><li><a href="https://www.runoob.com/w3cnote/vscode-tutorial.html">https://www.runoob.com/w3cnote/vscode-tutorial.html</a></li></ol></blockquote><p>高级链接:使用变量</p><blockquote><p>这个链接用 1 作为网址变量 <a href="http://www.google.com/">Google</a><br>这个链接用 runoob 作为网址变量 <a href="http://www.runoob.com/">Runoob</a></p></blockquote><p>然后在文档的结尾为变量赋值（网址）</p><p><strong>图片(picture)</strong>:显示图片.</p><ol><li>开头一个感叹号 !</li><li>接着一个方括号，里面放上图片的替代文字。</li><li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。<br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="alt 属性文本"><br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="alt 属性文本" title="可选标题"></li></ol><p><img src="http://static.runoob.com/images/runoob-logo.png" alt="alt markdown图片测试" title="something is going wrong."></p><p>Markdown 还没有办法指定图片的高度与宽度，如果你需要的话，你可以使用html中的普通的 <img> 标签。<br><img src="http://static.runoob.com/images/runoob-logo.png" alt="something is going wrong." width="50%"><br><strong>表格(form)</strong>:Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p><table><thead><tr><th align="center">name</th><th align="center">year</th></tr></thead><tbody><tr><td align="center">daming</td><td align="center">10</td></tr><tr><td align="center">daff</td><td align="center">12</td></tr><tr><td align="center">对齐方式</td><td align="center"></td></tr></tbody></table><blockquote><p>-: 设置内容和标题栏居右对齐。<br>:- 设置内容和标题栏居左对齐。<br>:-: 设置内容和标题栏居中对齐。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hello world </tag>
+            
+            <tag> tags test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/08/06/hello-world/"/>
+      <url>/2022/08/06/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><span id="more"></span><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
