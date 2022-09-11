@@ -4,6 +4,137 @@
   
     
     <entry>
+      <title>Object Detection Paper</title>
+      <link href="/2022/09/11/Object-Detection-Paper/"/>
+      <url>/2022/09/11/Object-Detection-Paper/</url>
+      
+        <content type="html"><![CDATA[<h1 id="论文名称"><a href="#论文名称" class="headerlink" title="论文名称"></a>论文名称</h1><p><a href="https://arxiv.org/abs/1907.09408">A Survey of Deep Learning-based Object Detection</a></p><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><strong>1. 写作目的</strong></p><blockquote><p>In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.</p></blockquote><p><strong>2. 文章内容</strong></p><blockquote><ol><li>we first analyze the methods of existing typical detection models and describe the benchmark datasets.</li><li>Afterwards and primarily, we provide a comprehensive overview of a variety of object detection methods in a systematic manner, covering the one-stage and two-stage detectors.</li><li>Moreover, we list the traditional and new applications. Some representative branches of object detection are analyzed as well.</li><li>Finally, we discuss the architecture of exploiting these object detection methods to build an effective and efficient system and point out a set of development trends to better follow the state-of-the-art algorithms and further research.</li></ol></blockquote><span id="more"></span><h2 id="Ⅰ-Introduction"><a href="#Ⅰ-Introduction" class="headerlink" title="Ⅰ.Introduction"></a>Ⅰ.Introduction</h2><h3 id="1-现存的目标检测器分类及其特点"><a href="#1-现存的目标检测器分类及其特点" class="headerlink" title="1. 现存的目标检测器分类及其特点"></a>1. 现存的目标检测器分类及其特点</h3><p><strong>1.1 one-stage：YOLO,SSD.</strong></p><blockquote><p>one-stage detectors achieve high inference speed.</p></blockquote><p><strong>1.2 two-stage：Faster R-CNN.</strong></p><blockquote><p>Two-stage detectors have high localization and object recognition accuracy.</p></blockquote><ol><li>The first stage, called RPN, a Region Proposal Network, proposes candidate object bounding boxes.</li><li>The second stage, features are extracted by RoI Pool(RoI Pooling) operation from each candidate box for the following classification and bounding-box regression tasks .</li></ol><p><strong>1.3两类对比</strong></p><blockquote><ol><li>Fig(a) shows the basic architecture of two-stage detectors.</li><li>Fig(b) exhibits the basic architecture of one-stage detectors.</li></ol></blockquote><p>Furthermore, the one-stage detectors propose predicted boxes from input images directly without region proposal step, thus they are time efficient and can be used for real-time devices.<br><img src="https://img1.imgtp.com/2022/08/29/qlYezasN.png" alt="1661761826298.png"></p><h2 id="Backbone-Networks"><a href="#Backbone-Networks" class="headerlink" title="Backbone Networks"></a>Backbone Networks</h2><p>Backbone network is acting as the basic feature extractor for object detection task which takes images as input and outputs feature maps of the corresponding input image.</p><p>Most of backbone networks for detection are the network for classification task taking out the last fully connected layers.</p><h2 id="Typical-Baselines"><a href="#Typical-Baselines" class="headerlink" title="Typical Baselines"></a>Typical Baselines</h2><ul><li><strong>Two-stage Detectors</strong><ol><li>R-CNN</li><li>Fast R-CNN</li><li>Faster R-CNN</li><li>Mask R-CNN</li></ol></li><li><strong>One-stage Detectors</strong><ol><li>YOLO series</li><li>SSD</li><li>DSSD</li><li>RetinaNet</li><li>M2Det</li><li>RefineDet</li></ol></li><li><strong>Latest Detectors</strong><ol><li>Relation Networks for Object Detection</li><li>DCNv2</li><li>NAS-FPN</li></ol></li></ul><h2 id="Datasets-and-Metrics"><a href="#Datasets-and-Metrics" class="headerlink" title="Datasets and Metrics"></a>Datasets and Metrics</h2><ol><li>PASCAL VOC dataset</li><li>MS COCO benchmark</li><li>ImageNet benchmark</li><li>VisDrone2018 benchmark</li><li>Open Images V5</li><li>Pedestrian detection datasets</li></ol><h2 id="Analysis-of-general-image-object-detection-methods"><a href="#Analysis-of-general-image-object-detection-methods" class="headerlink" title="Analysis of general image object detection methods"></a>Analysis of general image object detection methods</h2><p>Deep neural network based object detection pipelines have four steps in general, image pre-processing, feature extraction, classification and localization, post-processing.</p><ol><li>Firstly, raw images from the dataset cant be fed into the network directly.<br>Therefore, we need to resize them to any special sizes and make them clearer, such as enhancing brightness, color, contrast. Data augmentation is also available to meet some requirements, such as flipping, rotation, scaling, cropping, translation, adding Gaussian noise. In addition, GANs  (generative adversarial networks) can generate new images to enrich the diversity of input according to people’s needs. For more details about data augmentation, please refer to for more details.</li><li>Secondly, feature extraction is a key step for further detection.<br>The feature quality directly determines the upper bound of subsequent tasks like classification and localization.</li><li>Thirdly, the detector head is responsible to propose and refine bounding box concluding classification scores and bounding box coordinates.</li><li>At last, the post-processing step deletes any weak detecting results.<br>For example, NMS is a widely used method in which the highest scoring object deletes its nearby objects with inferior classification scores.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 文献阅读 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 目标检测文献综述 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深度学习-基础知识</title>
+      <link href="/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-卷积神经网络的基础运算"><a href="#1-卷积神经网络的基础运算" class="headerlink" title="1. 卷积神经网络的基础运算"></a>1. 卷积神经网络的基础运算</h2><h3 id="1-1-对1维数据进行卷积运算的例子"><a href="#1-1-对1维数据进行卷积运算的例子" class="headerlink" title="1.1 对1维数据进行卷积运算的例子"></a>1.1 对1维数据进行卷积运算的例子</h3><p>对于输入数据，卷积运算以一定间隔滑动滤波器(filter)的窗口并应用。将各个位置上滤波器的元素和输入的对应元素相乘，然后再求和。然后，将这个结果保存到输出的对应位置。将这个过程在所有位置都进行一遍，就可以得到卷积运算的输出，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Gd4wmhBA.png" alt="对1维数据进行卷积运算的例子"></p><span id="more"></span><h3 id="1-2-卷积加偏置-bias"><a href="#1-2-卷积加偏置-bias" class="headerlink" title="1.2 卷积加偏置(bias)"></a>1.2 卷积加偏置(bias)</h3><p>对输入数据进行卷积操作之后，对所得到的数据加上一个数值，这个数值别成为偏置，偏置通常只有一个。</p><p><img src="https://img1.imgtp.com/2022/08/26/pJN0QVFU.png" alt="卷积加偏置"></p><h3 id="1-3-卷积加填充-padding"><a href="#1-3-卷积加填充-padding" class="headerlink" title="1.3 卷积加填充(padding)"></a>1.3 卷积加填充(padding)</h3><p>在进行卷积层的处理之前，有时要向输入数据的周围填入固定的数据(比如0等)，这称为填充(padding)，是卷积运算中经常会用到的处理。比如，在下图的例子中，对大小为(4, 4)的输入数据应用了幅度为1的填充。“幅度为1的填充”是指用幅度为1像素的0填充周围。<br><img src="https://img1.imgtp.com/2022/08/26/rLCmRF8a.png" alt="卷积加填充"></p><p>通过填充，大小为(4, 4)的输入数据变成了(6, 6)的形状。然后，应用大小为(3, 3)的滤波器，生成了大小为(4, 4)的输出数据。这个例子中将填充设成了1，不过填充的值也可以设置成2、3等任意的整数。<strong>使用填充主要是为了调整输出的大小。</strong> 比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为 1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p><h3 id="1-4-步幅-stride"><a href="#1-4-步幅-stride" class="headerlink" title="1.4 步幅(stride)"></a>1.4 步幅(stride)</h3><p>应用滤波器的位置间隔称为步幅(stride)。之前的例子中步幅都是1，如果将步幅设为2。如下图所示，应用滤波器的窗口的间隔变为2个元素。<br><img src="https://img1.imgtp.com/2022/08/26/HoS7iooZ.png" alt="步幅"></p><h3 id="1-5-参数计算"><a href="#1-5-参数计算" class="headerlink" title="1.5 参数计算"></a>1.5 参数计算</h3><p>设输入大小(H,W),滤波器大小(FH,FW),输出大小(OH,OW),填充(P),步幅(S)。则<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{H+2P-FH}{S}+1\<br>OW&#x3D;\frac{W+2P-FW}{S}+1  \tag{1.1}<br>\end{cases}<br>\end{equation}<br>$$</p><p>eg. 输入大小：(28,31)；填充：2；步幅：3；滤波器大小：(5, 5),根据上述计算公式<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{28+2 \times 2-5}{3}+1&#x3D;10\<br>OW&#x3D;\frac{31+2 \times 2-5}{3}+1&#x3D;11 \tag{1.2}<br>\end{cases}<br>\end{equation}<br>$$</p><p>如这些例子所示，通过在式（1.1）中代入值，就可以计算输出大小。这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使式（1.1）中的和分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据深度学习的框架的不同，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p><h3 id="1-6-对3维数据进行卷积运算的例子"><a href="#1-6-对3维数据进行卷积运算的例子" class="headerlink" title="1.6 对3维数据进行卷积运算的例子"></a>1.6 对3维数据进行卷积运算的例子</h3><p>以3通道的数据为例，展示了卷积运算的结果。和2维数据时相比，可以发现纵深方向（通道方向）上特征图增加了。通道方向上有多个特征图时，会按通道进行输入数据和滤波器的卷积运算，并将<strong>结果相加</strong>，从而得到输出。<br><img src="https://img1.imgtp.com/2022/08/26/OmLne8Xu.png" alt="对3维数据进行卷积运算的例子"></p><h3 id="1-7-结合方块思考"><a href="#1-7-结合方块思考" class="headerlink" title="1.7 结合方块思考"></a>1.7 结合方块思考</h3><p>将数据和滤波器结合长方体的方块来考虑，3维数据的卷积运算会很容易理解。方块是如下图所示的3维长方体。把3维数据表示为多维数组时，书写顺序为（channel, height, width）。比如，通道数为C、高度为H、长度为W的数据的形状可以写成（C, H, W）。滤波器也一样，要按（channel, height, width）的顺序书写。比如，通道数为C、滤波器高度为FH（Filter Height）、长度为FW（Filter Width）时，可以写成（C, FH, FW）。<br><img src="https://img1.imgtp.com/2022/08/26/G1rn0T9z.png" alt="结合方块思考卷积运算"><br>在这个例子中，数据输出是1张特征图。所谓1张特征图，换句话说，就是通道数为1的特征图。</p><p>如果要在通道方向上也拥有多个卷积运算就需要用到多个滤波器（权重）。用图表示的话，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/lHJDm0VC.png" alt="基于多个滤波器的卷积运算的例子"><br>如上图所示，通过应用FN个滤波器，输出特征图也生成了FN个。如果将这FN个特征图汇集在一起，就得到了形状为(FN, OH, OW)的方块。将这个方块传给下一层，就是CNN的处理流。关于卷积运算的滤波器，也必须考虑滤波器的数量。因此，作为4维数据，滤波器的权重数据要按(output_channel, input_channel, height, width)的顺序书写。比如，通道数为3、大小为5 × 5的滤波器有20个时，可以写成(20, 3, 5, 5)。</p><p><img src="https://img1.imgtp.com/2022/08/26/DxltFORW.png" alt="卷积运算的处理流（追加了偏置项）"><br>每个通道只有一个偏置。这里，偏置的形状是(FN, 1, 1)，滤波器的输出结果的形状是(FN, OH, OW)。这两个方块相加时，要对滤波器的输出结果(FN, OH, OW)按通道加上相同的偏置值。另外，不同形状的方块相加时，可以基于NumPy的广播功能实现。</p><h3 id="1-8-数据批处理"><a href="#1-8-数据批处理" class="headerlink" title="1.8 数据批处理"></a>1.8 数据批处理</h3><p>下图的批处理版的数据流中，在各个数据的开头添加了批用的维度。像这样，数据作为4维的形状在各层间传递。这里需要注意的是，网络间传递的是4维数据，对这N个数据进行了卷积运算。也就是说，批处理将N次的处理汇总成了1次进行。<br><img src="https://img1.imgtp.com/2022/08/26/jZGv4JkU.png" alt="1661503735483.png"></p><h3 id="1-9-池化-pooling"><a href="#1-9-池化-pooling" class="headerlink" title="1.9 池化(pooling)"></a>1.9 池化(pooling)</h3><p>池化是缩小高、长方向上的空间的运算。比如，如下图所示，进行将2 × 2的区域集约成1个元素的处理，缩小空间大小。除了Max池化之外，还有Average池化等。相对于Max池化是从目标区域中取出最大值，Average池化则是计算目标区域的平均值。在图像识别领域，主要使用Max池化。<br><img src="https://img1.imgtp.com/2022/08/26/7KRz3zjP.png" alt="pooling.png"></p><p><strong>池化层的特征</strong></p><ul><li><strong>没有要学习的参数:</strong> 池化层和卷积层不同，没有要学习的参数。池化只是从目标区域中取最大值（或者平均值），所以不存在要学习的参数。</li><li><strong>通道数不发生变化:</strong> 经过池化运算，输入数据和输出数据的通道数不会发生变化。算是按通道独立进行的。</li><li><strong>对微小的位置变化具有鲁棒性:</strong> 输入数据发生微小偏差时，池化仍会返回相同的结果。因此，池化对输入数据的微小偏差具有鲁棒性,如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Ce8YPLSJ.png" alt="img"></li></ul><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol><li><a href="https://product.dangdang.com/11039869962.html">深度学习入门：基于Python的理论与实现</a></li><li><a href="https://www.cnblogs.com/peaceWang/p/Markdown-tian-jia-Latex-shu-xue-gong-shi.html#toc_0">Markdown添加Latex数学公式添加公式的方法</a></li><li><a href="https://www.latexlive.com/help">LaTeX公式编辑器帮助文档</a></li><li><a href="https://blog.csdn.net/Strive_For_Future/article/details/118609968">Latex公式编号: 多行公式多编号，多行公式单编号</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 深度学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>testbench</title>
+      <link href="/2022/08/24/testbench/"/>
+      <url>/2022/08/24/testbench/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-testbench"><a href="#1-testbench" class="headerlink" title="1. testbench"></a>1. testbench</h2><p>testbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工具。</p><span id="more"></span><h2 id="2-testbench组成"><a href="#2-testbench组成" class="headerlink" title="2. testbench组成"></a>2. testbench组成</h2><p><img src="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png" alt="testbench组成结构图"><br>其中testbench最基本的结构包括信号声明、激励和模块例化,复位和时钟产生部分，也可以看做激励。根据设计的复杂度，需要引入时钟和复位部分。当然更为复杂的设计，激励部分也会更加复杂。根据自己的验证需求，选择是否需要自校验和停止仿真部分。</p><h2 id="3-testbench模板"><a href="#3-testbench模板" class="headerlink" title="3.testbench模板"></a>3.testbench模板</h2><pre><code>`timescale 1ns/1ps  //时间精度`define    Clock 20 //时钟周期module u_design_tb;//==================&lt;端口&gt;==================================================reg                         clk                 ; //时钟，50Mhzreg                         rst_n               ; //复位，低电平有效reg  [XX:0]                 in                  ; //wire [XX:0]                 out                 ; ////--------------------------------------------------------------------------//--    模块例化//--------------------------------------------------------------------------u_design u_design_inst(    .clk                    (clk                ),    .rst_n                  (rst_n              ),    .in                     (in                 ),    .out                    (out                ));//----------------------------------------------------------------------//--    时钟信号和复位信号//----------------------------------------------------------------------initial begin    clk = 0;    forever        #(`Clock/2) clk = ~clk;endinitial begin    rst_n = 0; #(`Clock*20+1);    rst_n = 1;end//----------------------------------------------------------------------//--    设计输入信号//----------------------------------------------------------------------initial begin    in = 0;    #(`Clock*20+2); //初始化完成    $stop;endendmodule</code></pre><h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度module fifo_wr_tb(); //==================&lt;端口&gt;==================================================reg clk;             reg rst_n;reg start_write;reg start_send;wire writing;wire sending;wire uart_txd;//==================&lt;模块例化&gt;==================================================fifo_top u_fifo_wr(    .sys_clk(clk),    .sys_rst_n(rst_n),    .key_0(start_write),    .key_1(start_send),    .led_0(writing),    .led_1(sending),    .uart_txd(uart_txd));//==================&lt;模块时钟&gt;==================================================initial clk = 1;always #10 clk =!clk;initial begin    rst_n = 0;    start_write = 1;    start_send = 1;    #201    rst_n = 1; //==================&lt;模块输入信号&gt;==================================================    start_write = 0; //开始fifo写入    #30_000_000;     //按键延时＋去抖需要20ms以上    start_write = 1;    #10_000_000;     //等待写入完毕        start_send = 0;  //开始串口发送    #30_000_000;     //按键延时＋去抖需要20ms以上    start_send = 1;    #30_000_000;    $stop;endendmodule</code></pre><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/37028619">十天学会FPGA之三——testbench的写法</a></li><li><a href="https://www.cnblogs.com/xianyufpga/p/11353455.html">Testbench编写技巧</a></li><li><a href="https://www.runoob.com/w3cnote/verilog-testbench.html">Verilog 仿真激励</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> FPGA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Verilog HDL相关知识 </tag>
+            
+            <tag> testbench </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>可综合语句及其对应电路结构</title>
+      <link href="/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/"/>
+      <url>/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-1-wire和reg"><a href="#1-1-wire和reg" class="headerlink" title="1.1 wire和reg"></a>1.1 wire和reg</h2><p>wire会被综合为一截导线,reg会被综合为一个寄存器.</p><h2 id="1-2-D触发器"><a href="#1-2-D触发器" class="headerlink" title="1.2 D触发器"></a>1.2 D触发器</h2><pre><code>always @(posedge clk) begin     q &lt;= d;end</code></pre><span id="more"></span><h2 id="1-3-多路选择器"><a href="#1-3-多路选择器" class="headerlink" title="1.3 多路选择器"></a>1.3 多路选择器</h2><p>if会被总综合为一个二选一选择器。<br><img src="https://img-blog.csdnimg.cn/2019052010261364.png" alt="二选一选择器" ></p><p>case会被综合成n选一多路器。<br><img src="https://img-blog.csdnimg.cn/20200612092955461.png" alt="多路选择器" ></p><p>if语句和组合逻辑下的case语句，他们的条件是<strong>有优先级的</strong>，从上到下优先级递减。<br>优先级：越靠近输出，优先级越高。if else 结构if的优先级最高；多if 结构最后一个if优先级最高。</p><pre><code>always @(posedge clk) begin     if(sel)         q &lt;=a;    else        q &lt;=b;end</code></pre><p>未完待续，待补齐Verilog综合之后电路原理图…</p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol><li><a href="https://blog.csdn.net/lianglei665/article/details/114636381">FPGA中常见语法综合后的电路</a></li><li><a href="https://blog.csdn.net/weixin_45912567/article/details/106707795#:~:text=FPGA%20%E4%B8%AD%20%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%20%E7%BB%BC%E5%90%88%20%E5%90%8E%20%E7%9A%84%E7%94%B5%E8%B7%AF%20%E4%B8%8E%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%EF%BC%8CHDL%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%20%E7%94%B5%E8%B7%AF,%E7%9A%84%20%E8%BF%87%E7%A8%8B%E6%97%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%B0%86%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%20%E7%9A%84%20%E6%80%9D%E6%83%B3%E5%B8%A6%E5%85%A5%E5%88%B0HDL%E8%AF%AD%E8%A8%80%E4%B9%A6%E5%86%99%E4%B8%8A%E9%9D%A2%E6%9D%A5%EF%BC%8C%E8%80%8C%E6%98%AF%E9%9C%80%E8%A6%81%E6%97%B6%E5%88%BB%E6%98%8E%E7%99%BD%E8%87%AA%E5%B7%B1%E6%89%80%E5%86%99%20%E7%9A%84%20%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%20%E7%9A%84%20%E7%A1%AC%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82">verilog 中if语句和case语句综合成的电路</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> FPGA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Verilog HDL相关知识 </tag>
+            
+            <tag> 部分可综合语句及其对因电路结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>可综合和不可综合</title>
+      <link href="/2022/08/22/%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88/"/>
+      <url>/2022/08/22/%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-可综合不可综合的定义"><a href="#1-可综合不可综合的定义" class="headerlink" title="1. 可综合不可综合的定义"></a>1. 可综合不可综合的定义</h2><p>HDL有两种基本的用途：<strong>系统仿真</strong>和<strong>设计实现</strong>。所有的HDL都可用于仿真，但并非所有的HDL描述都可综合。例如行为级语法就是一种不可综合的代码，通常用于写仿真测试文件。</p><ul><li><strong>可综合：</strong> 所编写的代码<strong>有</strong>对应具体的电路结构。</li><li><strong>不可综合：</strong> 所编写代码<strong>没有</strong>对应的具体的电路结构。</li></ul><span id="more"></span><h2 id="2-可综合语句与不可综合语句"><a href="#2-可综合语句与不可综合语句" class="headerlink" title="2. 可综合语句与不可综合语句"></a>2. 可综合语句与不可综合语句</h2><h3 id="2-1-所有综合工具都支持的结构"><a href="#2-1-所有综合工具都支持的结构" class="headerlink" title="2.1 所有综合工具都支持的结构"></a>2.1 所有综合工具都支持的结构</h3><pre><code>always,assign,begin,end,case,wire,tri,aupply0,supply1,reg,integer,default,for,function,and,nand,or,nor,xor,xnor,buf,not,bufif0,bufif1,notif0,notif1,if,inout,input,instantitation,module,negedge,posedge,operators,output,parameter.</code></pre><table><thead><tr><th align="center">结构类型</th><th align="center">关键字</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">端口信号</td><td align="center">inout，input，output</td><td align="center">端口信号只有 3 种</td></tr><tr><td align="center">参数</td><td align="center">parameter, localparam</td><td align="center">—</td></tr><tr><td align="center">信号变量</td><td align="center">wire, reg, tri, integer</td><td align="center">—</td></tr><tr><td align="center">模块</td><td align="center">module</td><td align="center">—</td></tr><tr><td align="center">门级原语</td><td align="center">and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，supply0，supply1</td><td align="center">直接调用例化即可</td></tr><tr><td align="center">例化</td><td align="center">支持模块例化、门级原语例化等</td><td align="center">—</td></tr><tr><td align="center">函数与任务</td><td align="center">function, task</td><td align="center">支持不含时序结构的表述</td></tr><tr><td align="center">连续赋值</td><td align="center">assign</td><td align="center">不支持带有延迟的表述</td></tr><tr><td align="center">过程赋值</td><td align="center">always, begin, end</td><td align="center">可设计时序逻辑或组合逻辑</td></tr><tr><td align="center">条件语句</td><td align="center">if, case, default</td><td align="center">条件中不能包含”z”或”x”的比较</td></tr><tr><td align="center">循环语句</td><td align="center">for, while, forever,while, forever</td><td align="center">必须包含 @(posedge clk) 或 @(negedge clk), 避免组合逻辑回路</td></tr><tr><td align="center">边沿触发</td><td align="center">negedge，posedge</td><td align="center">—</td></tr><tr><td align="center">操作符</td><td align="center">支持除&#x3D;&#x3D;&#x3D;和!&#x3D;&#x3D;以外的所有操作符</td><td align="center">—</td></tr></tbody></table><h3 id="2-2-综合工具可能支持的的结构"><a href="#2-2-综合工具可能支持的的结构" class="headerlink" title="2.2 综合工具可能支持的的结构"></a>2.2 综合工具可能支持的的结构</h3><pre><code>casex,casez,wand,triand,wor,trior,real,disable,forever,arrays,memories,repeat,task,while.</code></pre><table><thead><tr><th align="center">结构类型</th><th align="center">关键字</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">x&#x2F;z</td><td align="center">条件语句casex, casez</td><td align="center">有些综合工具能识别该语句中的非”x&#x2F;z”比较逻辑</td></tr><tr><td align="center">不同强度的线网</td><td align="center">wand，triand，wor，trior</td><td align="center">当信号有多个驱动源时需要使用但现在数字设计基本摒弃了这些变量类型</td></tr><tr><td align="center">实数变量</td><td align="center">real</td><td align="center">往往用于仿真时的精确计算</td></tr><tr><td align="center">过程终止</td><td align="center">disable</td><td align="center">终止过程块执行，大多数综合工具不支持该命令</td></tr><tr><td align="center">循环语句</td><td align="center">repeat, while, forever</td><td align="center">repeat常用作仿真中语句循环执行固定次数，while, forever循环次数为常量时也可能可综合</td></tr><tr><td align="center">用户自定义原语</td><td align="center">UDP</td><td align="center">其实目前大多数综合工具都支持UDP，只是某些古老的综合工具不会识别</td></tr><tr><td align="center">过程连续赋值</td><td align="center">assign, deassign</td><td align="center">工具大多不支持该操作下reg数据类型的综合，<strong>支持该操作下wire数据类型的综合</strong>。</td></tr></tbody></table><h3 id="2-3-所有综合工具都不支持的结构"><a href="#2-3-所有综合工具都不支持的结构" class="headerlink" title="2.3 所有综合工具都不支持的结构"></a>2.3 所有综合工具都不支持的结构</h3><pre><code>time,defparam,$finish,fork,join,initial,delays,UDP,wait,#.</code></pre><table><thead><tr><th align="center">结构类型</th><th align="center">关键字</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">变量类型</td><td align="center">time</td><td align="center">仿真时使用的时间型变量</td></tr><tr><td align="center">系统任务</td><td align="center">—</td><td align="center">大多数系统任务都是辅助仿真，不能综合为实际电路。例如 $display, $fopen, $finish 等。</td></tr><tr><td align="center">过程结构</td><td align="center">initial</td><td align="center">initial常用作仿真时信号赋初值操作或控制激励信号的时序</td></tr><tr><td align="center">并行语句</td><td align="center">fork, join</td><td align="center">常用作仿真时并行结构的描述always @(posedge clk) 描述的并行结构可综合</td></tr><tr><td align="center">延迟语句</td><td align="center">#</td><td align="center">所有带延迟标志”#”的表述均不可综合，但仿真时电路中会有延时，综合时也不会报错</td></tr><tr><td align="center">电平敏感触发</td><td align="center">wait</td><td align="center">多用于仿真中信号的检测启动</td></tr><tr><td align="center">强制赋值和释放</td><td align="center">force, release</td><td align="center">多用于仿真中阻断其他驱动源，对信号进行强制赋值</td></tr></tbody></table><h2 id="3-设计可综合语句的要点"><a href="#3-设计可综合语句的要点" class="headerlink" title="3. 设计可综合语句的要点"></a>3. 设计可综合语句的要点</h2><p>使用 Verilog 进行数字设计时，需要遵循以下原则：可综合的结构在设计实现中使用，不可综合的结构在仿真中使用，有些综合工具支持有些不支持的结构尽量不使用。</p><ol><li>不使用initial初始化语句。</li><li>不使用带有延时(# 10)的描述。</li><li>不使用循环次数不确定的循环语句，forever、while和repeat。</li><li>尽量采用同步方式设计电路。</li><li>除非是关键路径设计，一般不采用调用门级元件来描述设计的方法，建议采用行为语句来完成设计。</li><li>用always过程块描述组合逻辑，应在敏感信号列表中列出所有的输入信号。</li><li>所有的内部寄存器都应该能够被复位，应尽量使用器件的全局复位端作为系统总的复位。</li><li>用户自定义原语（UDP元件）是不可综合的，它只能用来建立门级元件的仿真模型。</li><li>对时序逻辑描述和建模，应使用非阻塞赋值(&lt;&#x3D;) 。对组合逻辑描述和建模，用阻塞赋值(&#x3D;)。但在同一个过程块中，两种赋值方式不能混用。</li><li>不能在一个以上的always过程块中对同一个变量赋值，并且对同一个赋值对象不能既使用阻塞式赋值，又使用非阻塞式赋值。</li><li>组合电路如果不打算把变量推导成锁存器(latch)，那么必须在if语句或case语句的所有条件分支中都对变量明确地赋值。</li><li>避免混合使用上升沿(posedge)和下降沿(negedge)触发的触发器。</li><li>同一个变量的赋值不能受多个时钟控制，也不能受两种不同的时钟条件（或者不同的时钟沿）控制。</li><li>避免在case语句的分支项中使用x值或z值。</li></ol><h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h2><ol><li><a href="http://www.eepw.com.cn/article/201605/290588.htm">verilog之可综合与不可综合</a></li><li><a href="https://www.w3cschool.cn/verilog2/verilog2-16vm3o60.html">Verilog 可综合性设计</a></li><li><a href="https://zhuanlan.zhihu.com/p/350987657">FPGA建立可综合模型的原则</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> FPGA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Verilog HDL相关知识 </tag>
+            
+            <tag> 可综合和不可综合语句 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>胡言乱语</title>
       <link href="/2022/08/11/today/"/>
       <url>/2022/08/11/today/</url>
@@ -50,19 +181,6 @@
             <tag> tags test </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2022/08/06/hello-world/"/>
-      <url>/2022/08/06/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><span id="more"></span><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
