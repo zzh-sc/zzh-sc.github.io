@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>OpenWrt系统编译</title>
+      <link href="/2022/09/18/OpenWrt%E7%B3%BB%E7%BB%9F%E7%BC%96%E8%AF%91/"/>
+      <url>/2022/09/18/OpenWrt%E7%B3%BB%E7%BB%9F%E7%BC%96%E8%AF%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="OpenWrt系统编译"><a href="#OpenWrt系统编译" class="headerlink" title="OpenWrt系统编译"></a>OpenWrt系统编译</h1><p>OpenWrt 可以被描述为一个嵌入式的 Linux 发行版。（主流路由器固件有 dd-wrt,tomato,openwrt,padavan四类）对比一个单一的、静态的系统，OpenWrt的包管理提供了一个完全可写的文件系统，从应用程序供应商提供的选择和配置，并允许您自定义的设备，以适应任何应用程序。</p><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol><li>不要用 root 用户进行编译。</li><li>国内用户编译前准备好科学上网工具，有很多资源需要从国外网站下载。</li><li>默认登陆IP 192.168.1.1 密码 password。</li></ol><span id="more"></span><h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ol><li><p>首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS。</p></li><li><p>安装编译依赖</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt full-upgrade -y</span><br><span class="line">sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \</span><br><span class="line">bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \</span><br><span class="line">git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \</span><br><span class="line">libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \</span><br><span class="line">mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \</span><br><span class="line">rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev</span><br></pre></td></tr></table></figure></li><li><p>下载源代码，更新 feeds 并选择配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/coolsnowwolf/lede</span><br><span class="line">cd lede</span><br><span class="line">./scripts/feeds update -a</span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure></li><li><p>下载 dl 库，编译固件 （-j 后面是线程数，第一次编译推荐用单线程）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make download -j8  # 下载资源，比较耗时</span><br><span class="line">make V=s -j1       </span><br></pre></td></tr></table></figure></li><li><p>二次编译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd lede</span><br><span class="line">git pull</span><br><span class="line">./scripts/feeds update -a</span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make defconfig</span><br><span class="line">make download -j8</span><br><span class="line">make V=s -j$(nproc)</span><br></pre></td></tr></table></figure></li><li><p>重新配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ./tmp &amp;&amp; rm -rf .config</span><br><span class="line">make menuconfig</span><br><span class="line">make V=s -j$(nproc)</span><br></pre></td></tr></table></figure></li><li><p>生成固件位置<br>以树莓派3B为例：&#x2F;lede-master&#x2F;bin&#x2F;targets&#x2F;bcm27xx&#x2F;bcm2710</p></li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol><li><a href="https://github.com/coolsnowwolf/lede">Lean 的 Openwrt 源码仓库</a></li><li><a href="https://www.bilibili.com/read/cv9714518/">树莓派4B 亲手打造一款Openwrt软路由(带编译固件-超详细) - RaspberryPi硬核系列(三)</a></li><li><a href="https://www.right.com.cn/forum/thread-344825-1-1.html">OpenWrt 编译 LuCI -&gt; Applications 添加插件应用说明-L大</a></li><li><a href="https://github.com/kenzok8/openwrt-packages">openwrt插件</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 爱好 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenWrt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>about me</title>
       <link href="/2022/09/11/welcome/"/>
       <url>/2022/09/11/welcome/</url>
