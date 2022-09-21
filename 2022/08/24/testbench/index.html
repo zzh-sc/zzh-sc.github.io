@@ -279,7 +279,6 @@
       
         <h2 id="1-testbench"><a href="#1-testbench" class="headerlink" title="1. testbench"></a>1. testbench</h2><p>testbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工具。</p>
 <span id="more"></span>
-
 <h2 id="2-testbench组成"><a href="#2-testbench组成" class="headerlink" title="2. testbench组成"></a>2. testbench组成</h2><p><img src="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png" alt=
 "testbench组成结构图"><br>其中testbench最基本的结构包括信号声明、激励和模块例化,复位和时钟产生部分，也可以看做激励。根据设计的复杂度，需要引入时钟和复位部分。当然更为复杂的设计，激励部分也会更加复杂。根据自己的验证需求，选择是否需要自校验和停止仿真部分。</p>
 <h2 id="3-testbench模板"><a href="#3-testbench模板" class="headerlink" title="3.testbench模板"></a>3.testbench模板</h2><pre><code>`timescale 1ns/1ps  //时间精度
@@ -327,8 +326,7 @@ initial begin
     $stop;
 end
 endmodule
-</code></pre>
-<h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度
+</code></pre><h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度
 module fifo_wr_tb();
  //==================&lt;端口&gt;==================================================
 reg clk;             
@@ -364,7 +362,7 @@ initial begin
     #30_000_000;     //按键延时＋去抖需要20ms以上
     start_write = 1;
     #10_000_000;     //等待写入完毕
-    
+
     start_send = 0;  //开始串口发送
     #30_000_000;     //按键延时＋去抖需要20ms以上
     start_send = 1;
@@ -372,8 +370,7 @@ initial begin
     $stop;
 end
 endmodule
-</code></pre>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+</code></pre><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37028619">十天学会FPGA之三——testbench的写法</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xianyufpga/p/11353455.html">Testbench编写技巧</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/verilog-testbench.html">Verilog 仿真激励</a></li>
@@ -579,7 +576,7 @@ endmodule
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">31 分钟</span>
+    <span title="站点阅读时长">30 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
 
