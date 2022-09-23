@@ -281,183 +281,175 @@
 <li><strong>不可综合：</strong> 所编写代码<strong>没有</strong>对应的具体的电路结构。</li>
 </ul>
 <span id="more"></span>
+
 <h2 id="2-可综合语句与不可综合语句"><a href="#2-可综合语句与不可综合语句" class="headerlink" title="2. 可综合语句与不可综合语句"></a>2. 可综合语句与不可综合语句</h2><h3 id="2-1-所有综合工具都支持的结构"><a href="#2-1-所有综合工具都支持的结构" class="headerlink" title="2.1 所有综合工具都支持的结构"></a>2.1 所有综合工具都支持的结构</h3><pre><code>always,assign,begin,end,case,wire,tri,aupply0,supply1,reg,integer,default,for,function,and,nand,or,nor,xor,xnor,buf,not,bufif0,bufif1,notif0,notif1,if,inout,input,instantitation,module,negedge,posedge,operators,output,parameter.
-</code></pre><div class="table-container">
+</code></pre>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">结构类型</th>
-<th style="text-align:center">关键字</th>
-<th style="text-align:center">描述</th>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">端口信号</td>
-<td style="text-align:center">inout，input，output</td>
-<td style="text-align:center">端口信号只有 3 种</td>
+<tbody><tr>
+<td align="center">端口信号</td>
+<td align="center">inout，input，output</td>
+<td align="center">端口信号只有 3 种</td>
 </tr>
 <tr>
-<td style="text-align:center">参数</td>
-<td style="text-align:center">parameter, localparam</td>
-<td style="text-align:center">—-</td>
+<td align="center">参数</td>
+<td align="center">parameter, localparam</td>
+<td align="center">—</td>
 </tr>
 <tr>
-<td style="text-align:center">信号变量</td>
-<td style="text-align:center">wire, reg, tri, integer</td>
-<td style="text-align:center">—-</td>
+<td align="center">信号变量</td>
+<td align="center">wire, reg, tri, integer</td>
+<td align="center">—</td>
 </tr>
 <tr>
-<td style="text-align:center">模块</td>
-<td style="text-align:center">module</td>
-<td style="text-align:center">—-</td>
+<td align="center">模块</td>
+<td align="center">module</td>
+<td align="center">—</td>
 </tr>
 <tr>
-<td style="text-align:center">门级原语</td>
-<td style="text-align:center">and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，supply0，supply1</td>
-<td style="text-align:center">直接调用例化即可</td>
+<td align="center">门级原语</td>
+<td align="center">and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，supply0，supply1</td>
+<td align="center">直接调用例化即可</td>
 </tr>
 <tr>
-<td style="text-align:center">例化</td>
-<td style="text-align:center">支持模块例化、门级原语例化等</td>
-<td style="text-align:center">—-</td>
+<td align="center">例化</td>
+<td align="center">支持模块例化、门级原语例化等</td>
+<td align="center">—</td>
 </tr>
 <tr>
-<td style="text-align:center">函数与任务</td>
-<td style="text-align:center">function, task</td>
-<td style="text-align:center">支持不含时序结构的表述</td>
+<td align="center">函数与任务</td>
+<td align="center">function, task</td>
+<td align="center">支持不含时序结构的表述</td>
 </tr>
 <tr>
-<td style="text-align:center">连续赋值</td>
-<td style="text-align:center">assign</td>
-<td style="text-align:center">不支持带有延迟的表述</td>
+<td align="center">连续赋值</td>
+<td align="center">assign</td>
+<td align="center">不支持带有延迟的表述</td>
 </tr>
 <tr>
-<td style="text-align:center">过程赋值</td>
-<td style="text-align:center">always, begin, end</td>
-<td style="text-align:center">可设计时序逻辑或组合逻辑</td>
+<td align="center">过程赋值</td>
+<td align="center">always, begin, end</td>
+<td align="center">可设计时序逻辑或组合逻辑</td>
 </tr>
 <tr>
-<td style="text-align:center">条件语句</td>
-<td style="text-align:center">if, case, default</td>
-<td style="text-align:center">条件中不能包含”z”或”x”的比较</td>
+<td align="center">条件语句</td>
+<td align="center">if, case, default</td>
+<td align="center">条件中不能包含”z”或”x”的比较</td>
 </tr>
 <tr>
-<td style="text-align:center">循环语句</td>
-<td style="text-align:center">for, while, forever,while, forever</td>
-<td style="text-align:center">必须包含 @(posedge clk) 或 @(negedge clk), 避免组合逻辑回路</td>
+<td align="center">循环语句</td>
+<td align="center">for, while, forever,while, forever</td>
+<td align="center">必须包含 @(posedge clk) 或 @(negedge clk), 避免组合逻辑回路</td>
 </tr>
 <tr>
-<td style="text-align:center">边沿触发</td>
-<td style="text-align:center">negedge，posedge</td>
-<td style="text-align:center">—-</td>
+<td align="center">边沿触发</td>
+<td align="center">negedge，posedge</td>
+<td align="center">—</td>
 </tr>
 <tr>
-<td style="text-align:center">操作符</td>
-<td style="text-align:center">支持除===和!==以外的所有操作符</td>
-<td style="text-align:center">—-</td>
+<td align="center">操作符</td>
+<td align="center">支持除&#x3D;&#x3D;&#x3D;和!&#x3D;&#x3D;以外的所有操作符</td>
+<td align="center">—</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="2-2-综合工具可能支持的的结构"><a href="#2-2-综合工具可能支持的的结构" class="headerlink" title="2.2 综合工具可能支持的的结构"></a>2.2 综合工具可能支持的的结构</h3><pre><code>casex,casez,wand,triand,wor,trior,real,disable,forever,arrays,memories,repeat,task,while.
-</code></pre><div class="table-container">
+</code></pre>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">结构类型</th>
-<th style="text-align:center">关键字</th>
-<th style="text-align:center">描述</th>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">x/z</td>
-<td style="text-align:center">条件语句casex, casez</td>
-<td style="text-align:center">有些综合工具能识别该语句中的非”x/z”比较逻辑</td>
+<tbody><tr>
+<td align="center">x&#x2F;z</td>
+<td align="center">条件语句casex, casez</td>
+<td align="center">有些综合工具能识别该语句中的非”x&#x2F;z”比较逻辑</td>
 </tr>
 <tr>
-<td style="text-align:center">不同强度的线网</td>
-<td style="text-align:center">wand，triand，wor，trior</td>
-<td style="text-align:center">当信号有多个驱动源时需要使用但现在数字设计基本摒弃了这些变量类型</td>
+<td align="center">不同强度的线网</td>
+<td align="center">wand，triand，wor，trior</td>
+<td align="center">当信号有多个驱动源时需要使用但现在数字设计基本摒弃了这些变量类型</td>
 </tr>
 <tr>
-<td style="text-align:center">实数变量</td>
-<td style="text-align:center">real</td>
-<td style="text-align:center">往往用于仿真时的精确计算</td>
+<td align="center">实数变量</td>
+<td align="center">real</td>
+<td align="center">往往用于仿真时的精确计算</td>
 </tr>
 <tr>
-<td style="text-align:center">过程终止</td>
-<td style="text-align:center">disable</td>
-<td style="text-align:center">终止过程块执行，大多数综合工具不支持该命令</td>
+<td align="center">过程终止</td>
+<td align="center">disable</td>
+<td align="center">终止过程块执行，大多数综合工具不支持该命令</td>
 </tr>
 <tr>
-<td style="text-align:center">循环语句</td>
-<td style="text-align:center">repeat, while, forever</td>
-<td style="text-align:center">repeat常用作仿真中语句循环执行固定次数，while, forever循环次数为常量时也可能可综合</td>
+<td align="center">循环语句</td>
+<td align="center">repeat, while, forever</td>
+<td align="center">repeat常用作仿真中语句循环执行固定次数，while, forever循环次数为常量时也可能可综合</td>
 </tr>
 <tr>
-<td style="text-align:center">用户自定义原语</td>
-<td style="text-align:center">UDP</td>
-<td style="text-align:center">其实目前大多数综合工具都支持UDP，只是某些古老的综合工具不会识别</td>
+<td align="center">用户自定义原语</td>
+<td align="center">UDP</td>
+<td align="center">其实目前大多数综合工具都支持UDP，只是某些古老的综合工具不会识别</td>
 </tr>
 <tr>
-<td style="text-align:center">过程连续赋值</td>
-<td style="text-align:center">assign, deassign</td>
-<td style="text-align:center">工具大多不支持该操作下reg数据类型的综合，<strong>支持该操作下wire数据类型的综合</strong>。</td>
+<td align="center">过程连续赋值</td>
+<td align="center">assign, deassign</td>
+<td align="center">工具大多不支持该操作下reg数据类型的综合，<strong>支持该操作下wire数据类型的综合</strong>。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="2-3-所有综合工具都不支持的结构"><a href="#2-3-所有综合工具都不支持的结构" class="headerlink" title="2.3 所有综合工具都不支持的结构"></a>2.3 所有综合工具都不支持的结构</h3><pre><code>time,defparam,$finish,fork,join,initial,delays,UDP,wait,#.
-</code></pre><div class="table-container">
+</code></pre>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">结构类型</th>
-<th style="text-align:center">关键字</th>
-<th style="text-align:center">描述</th>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">变量类型</td>
-<td style="text-align:center">time</td>
-<td style="text-align:center">仿真时使用的时间型变量</td>
+<tbody><tr>
+<td align="center">变量类型</td>
+<td align="center">time</td>
+<td align="center">仿真时使用的时间型变量</td>
 </tr>
 <tr>
-<td style="text-align:center">系统任务</td>
-<td style="text-align:center">—-</td>
-<td style="text-align:center">大多数系统任务都是辅助仿真，不能综合为实际电路。例如 $display, $fopen, $finish 等。</td>
+<td align="center">系统任务</td>
+<td align="center">—</td>
+<td align="center">大多数系统任务都是辅助仿真，不能综合为实际电路。例如 $display, $fopen, $finish 等。</td>
 </tr>
 <tr>
-<td style="text-align:center">过程结构</td>
-<td style="text-align:center">initial</td>
-<td style="text-align:center">initial常用作仿真时信号赋初值操作或控制激励信号的时序</td>
+<td align="center">过程结构</td>
+<td align="center">initial</td>
+<td align="center">initial常用作仿真时信号赋初值操作或控制激励信号的时序</td>
 </tr>
 <tr>
-<td style="text-align:center">并行语句</td>
-<td style="text-align:center">fork, join</td>
-<td style="text-align:center">常用作仿真时并行结构的描述always @(posedge clk) 描述的并行结构可综合</td>
+<td align="center">并行语句</td>
+<td align="center">fork, join</td>
+<td align="center">常用作仿真时并行结构的描述always @(posedge clk) 描述的并行结构可综合</td>
 </tr>
 <tr>
-<td style="text-align:center">延迟语句</td>
-<td style="text-align:center">#</td>
-<td style="text-align:center">所有带延迟标志”#”的表述均不可综合，但仿真时电路中会有延时，综合时也不会报错</td>
+<td align="center">延迟语句</td>
+<td align="center">#</td>
+<td align="center">所有带延迟标志”#”的表述均不可综合，但仿真时电路中会有延时，综合时也不会报错</td>
 </tr>
 <tr>
-<td style="text-align:center">电平敏感触发</td>
-<td style="text-align:center">wait</td>
-<td style="text-align:center">多用于仿真中信号的检测启动</td>
+<td align="center">电平敏感触发</td>
+<td align="center">wait</td>
+<td align="center">多用于仿真中信号的检测启动</td>
 </tr>
 <tr>
-<td style="text-align:center">强制赋值和释放</td>
-<td style="text-align:center">force, release</td>
-<td style="text-align:center">多用于仿真中阻断其他驱动源，对信号进行强制赋值</td>
+<td align="center">强制赋值和释放</td>
+<td align="center">force, release</td>
+<td align="center">多用于仿真中阻断其他驱动源，对信号进行强制赋值</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="3-设计可综合语句的要点"><a href="#3-设计可综合语句的要点" class="headerlink" title="3. 设计可综合语句的要点"></a>3. 设计可综合语句的要点</h2><p>使用 Verilog 进行数字设计时，需要遵循以下原则：可综合的结构在设计实现中使用，不可综合的结构在仿真中使用，有些综合工具支持有些不支持的结构尽量不使用。</p>
 <ol>
 <li>不使用initial初始化语句。</li>
@@ -468,7 +460,7 @@
 <li>用always过程块描述组合逻辑，应在敏感信号列表中列出所有的输入信号。</li>
 <li>所有的内部寄存器都应该能够被复位，应尽量使用器件的全局复位端作为系统总的复位。</li>
 <li>用户自定义原语（UDP元件）是不可综合的，它只能用来建立门级元件的仿真模型。</li>
-<li>对时序逻辑描述和建模，应使用非阻塞赋值(&lt;=) 。对组合逻辑描述和建模，用阻塞赋值(=)。但在同一个过程块中，两种赋值方式不能混用。</li>
+<li>对时序逻辑描述和建模，应使用非阻塞赋值(&lt;&#x3D;) 。对组合逻辑描述和建模，用阻塞赋值(&#x3D;)。但在同一个过程块中，两种赋值方式不能混用。</li>
 <li>不能在一个以上的always过程块中对同一个变量赋值，并且对同一个赋值对象不能既使用阻塞式赋值，又使用非阻塞式赋值。</li>
 <li>组合电路如果不打算把变量推导成锁存器(latch)，那么必须在if语句或case语句的所有条件分支中都对变量明确地赋值。</li>
 <li>避免混合使用上升沿(posedge)和下降沿(negedge)触发的触发器。</li>
@@ -614,7 +606,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -627,7 +619,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -681,7 +673,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">31 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
 

@@ -288,26 +288,15 @@
       
         <h2 id="1-卷积神经网络的基础运算"><a href="#1-卷积神经网络的基础运算" class="headerlink" title="1. 卷积神经网络的基础运算"></a>1. 卷积神经网络的基础运算</h2><h3 id="1-1-对1维数据进行卷积运算的例子"><a href="#1-1-对1维数据进行卷积运算的例子" class="headerlink" title="1.1 对1维数据进行卷积运算的例子"></a>1.1 对1维数据进行卷积运算的例子</h3><p>对于输入数据，卷积运算以一定间隔滑动滤波器(filter)的窗口并应用。将各个位置上滤波器的元素和输入的对应元素相乘，然后再求和。然后，将这个结果保存到输出的对应位置。将这个过程在所有位置都进行一遍，就可以得到卷积运算的输出，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Gd4wmhBA.png" alt="对1维数据进行卷积运算的例子"></p>
 <span id="more"></span>
+
 <h3 id="1-2-卷积加偏置-bias"><a href="#1-2-卷积加偏置-bias" class="headerlink" title="1.2 卷积加偏置(bias)"></a>1.2 卷积加偏置(bias)</h3><p>对输入数据进行卷积操作之后，对所得到的数据加上一个数值，这个数值别成为偏置，偏置通常只有一个。</p>
 <p><img src="https://img1.imgtp.com/2022/08/26/pJN0QVFU.png" alt="卷积加偏置"></p>
 <h3 id="1-3-卷积加填充-padding"><a href="#1-3-卷积加填充-padding" class="headerlink" title="1.3 卷积加填充(padding)"></a>1.3 卷积加填充(padding)</h3><p>在进行卷积层的处理之前，有时要向输入数据的周围填入固定的数据(比如0等)，这称为填充(padding)，是卷积运算中经常会用到的处理。比如，在下图的例子中，对大小为(4, 4)的输入数据应用了幅度为1的填充。“幅度为1的填充”是指用幅度为1像素的0填充周围。<br><img src="https://img1.imgtp.com/2022/08/26/rLCmRF8a.png" alt="卷积加填充"></p>
 <p>通过填充，大小为(4, 4)的输入数据变成了(6, 6)的形状。然后，应用大小为(3, 3)的滤波器，生成了大小为(4, 4)的输出数据。这个例子中将填充设成了1，不过填充的值也可以设置成2、3等任意的整数。<strong>使用填充主要是为了调整输出的大小。</strong> 比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为 1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p>
 <h3 id="1-4-步幅-stride"><a href="#1-4-步幅-stride" class="headerlink" title="1.4 步幅(stride)"></a>1.4 步幅(stride)</h3><p>应用滤波器的位置间隔称为步幅(stride)。之前的例子中步幅都是1，如果将步幅设为2。如下图所示，应用滤波器的窗口的间隔变为2个元素。<br><img src="https://img1.imgtp.com/2022/08/26/HoS7iooZ.png" alt="步幅"></p>
-<h3 id="1-5-参数计算"><a href="#1-5-参数计算" class="headerlink" title="1.5 参数计算"></a>1.5 参数计算</h3><p>设输入大小(H,W),滤波器大小(FH,FW),输出大小(OH,OW),填充(P),步幅(S)。则</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{cases}
-OH=\frac{H+2P-FH}{S}+1\\
-OW=\frac{W+2P-FW}{S}+1  \tag{1.1}
-\end{cases}
-\end{equation}</script><p>eg. 输入大小：(28,31)；填充：2；步幅：3；滤波器大小：(5, 5),根据上述计算公式</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{cases}
-OH=\frac{28+2 \times 2-5}{3}+1=10\\
-OW=\frac{31+2 \times 2-5}{3}+1=11 \tag{1.2}
-\end{cases}
-\end{equation}</script><p>如这些例子所示，通过在式（1.1）中代入值，就可以计算输出大小。这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使式（1.1）中的和分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据深度学习的框架的不同，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
+<h3 id="1-5-参数计算"><a href="#1-5-参数计算" class="headerlink" title="1.5 参数计算"></a>1.5 参数计算</h3><p>设输入大小(H,W),滤波器大小(FH,FW),输出大小(OH,OW),填充(P),步幅(S)。则<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{H+2P-FH}{S}+1\<br>OW&#x3D;\frac{W+2P-FW}{S}+1  \tag{1.1}<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>eg. 输入大小：(28,31)；填充：2；步幅：3；滤波器大小：(5, 5),根据上述计算公式<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{28+2 \times 2-5}{3}+1&#x3D;10\<br>OW&#x3D;\frac{31+2 \times 2-5}{3}+1&#x3D;11 \tag{1.2}<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>如这些例子所示，通过在式（1.1）中代入值，就可以计算输出大小。这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使式（1.1）中的和分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据深度学习的框架的不同，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
 <h3 id="1-6-对3维数据进行卷积运算的例子"><a href="#1-6-对3维数据进行卷积运算的例子" class="headerlink" title="1.6 对3维数据进行卷积运算的例子"></a>1.6 对3维数据进行卷积运算的例子</h3><p>以3通道的数据为例，展示了卷积运算的结果。和2维数据时相比，可以发现纵深方向（通道方向）上特征图增加了。通道方向上有多个特征图时，会按通道进行输入数据和滤波器的卷积运算，并将<strong>结果相加</strong>，从而得到输出。<br><img src="https://img1.imgtp.com/2022/08/26/OmLne8Xu.png" alt="对3维数据进行卷积运算的例子"></p>
 <h3 id="1-7-结合方块思考"><a href="#1-7-结合方块思考" class="headerlink" title="1.7 结合方块思考"></a>1.7 结合方块思考</h3><p>将数据和滤波器结合长方体的方块来考虑，3维数据的卷积运算会很容易理解。方块是如下图所示的3维长方体。把3维数据表示为多维数组时，书写顺序为（channel, height, width）。比如，通道数为C、高度为H、长度为W的数据的形状可以写成（C, H, W）。滤波器也一样，要按（channel, height, width）的顺序书写。比如，通道数为C、滤波器高度为FH（Filter Height）、长度为FW（Filter Width）时，可以写成（C, FH, FW）。<br><img src="https://img1.imgtp.com/2022/08/26/G1rn0T9z.png" alt="结合方块思考卷积运算"><br>在这个例子中，数据输出是1张特征图。所谓1张特征图，换句话说，就是通道数为1的特征图。</p>
 <p>如果要在通道方向上也拥有多个卷积运算就需要用到多个滤波器（权重）。用图表示的话，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/lHJDm0VC.png" alt="基于多个滤波器的卷积运算的例子"><br>如上图所示，通过应用FN个滤波器，输出特征图也生成了FN个。如果将这FN个特征图汇集在一起，就得到了形状为(FN, OH, OW)的方块。将这个方块传给下一层，就是CNN的处理流。关于卷积运算的滤波器，也必须考虑滤波器的数量。因此，作为4维数据，滤波器的权重数据要按(output_channel, input_channel, height, width)的顺序书写。比如，通道数为3、大小为5 × 5的滤波器有20个时，可以写成(20, 3, 5, 5)。</p>
@@ -459,7 +448,7 @@ OW=\frac{31+2 \times 2-5}{3}+1=11 \tag{1.2}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -472,7 +461,7 @@ OW=\frac{31+2 \times 2-5}{3}+1=11 \tag{1.2}
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -526,7 +515,7 @@ OW=\frac{31+2 \times 2-5}{3}+1=11 \tag{1.2}
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">31 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
 
