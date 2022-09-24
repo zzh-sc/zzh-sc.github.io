@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff9a1c;
+  background: #d437cb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2727,17 +2727,17 @@ body {
   background-position: center;
 }
 .content-wrap {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .sidebar {
   background-color: transparent;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .header-inner {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .popup {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .site-brand-container {
   background: #000;
