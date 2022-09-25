@@ -21,25 +21,21 @@
     var CONFIG = {"hostname":"zzh-sc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2},"disqus":{"text":"Load Disqus","order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.1 wire和regwire会被综合为一截导线,reg会被综合为一个寄存器. 1.2 D触发器always @(posedge clk) begin      q &lt;&#x3D; d; end">
+  <meta name="description" content="1. 可综合不可综合的定义HDL有两种基本的用途：系统仿真和设计实现。所有的HDL都可用于仿真，但并非所有的HDL描述都可综合。例如行为级语法就是一种不可综合的代码，通常用于写仿真测试文件。  可综合： 所编写的代码有对应具体的电路结构。 不可综合： 所编写代码没有对应的具体的电路结构。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可综合语句及其对应电路结构">
-<meta property="og:url" content="https://zzh-sc.github.io/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:title" content="可综合和不可综合">
+<meta property="og:url" content="https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/index.html">
 <meta property="og:site_name" content="zhihao&#39;s Blog">
-<meta property="og:description" content="1.1 wire和regwire会被综合为一截导线,reg会被综合为一个寄存器. 1.2 D触发器always @(posedge clk) begin      q &lt;&#x3D; d; end">
+<meta property="og:description" content="1. 可综合不可综合的定义HDL有两种基本的用途：系统仿真和设计实现。所有的HDL都可用于仿真，但并非所有的HDL描述都可综合。例如行为级语法就是一种不可综合的代码，通常用于写仿真测试文件。  可综合： 所编写的代码有对应具体的电路结构。 不可综合： 所编写代码没有对应的具体的电路结构。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2019052010261364.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200612092955461.png
-">
-<meta property="article:published_time" content="2022-08-23T06:25:15.000Z">
-<meta property="article:modified_time" content="2022-09-11T06:35:32.243Z">
+<meta property="article:published_time" content="2022-08-22T06:25:15.000Z">
+<meta property="article:modified_time" content="2022-09-11T06:33:16.742Z">
 <meta property="article:author" content="zhihao">
 <meta property="article:tag" content="Verilog HDL相关知识">
-<meta property="article:tag" content="部分可综合语句及其对因电路结构">
+<meta property="article:tag" content="可综合和不可综合语句">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019052010261364.png">
 
-<link rel="canonical" href="https://zzh-sc.github.io/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/">
+<link rel="canonical" href="https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/">
 
 
 <script id="page-configurations">
@@ -52,7 +48,7 @@
   };
 </script>
 
-  <title>可综合语句及其对应电路结构 | zhihao's Blog</title>
+  <title>可综合和不可综合 | zhihao's Blog</title>
   
 
 
@@ -212,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img1.imgtp.com/2022/08/11/vgbXjbVR.JPG">
@@ -225,7 +221,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          可综合语句及其对应电路结构
+          可综合和不可综合
         </h1>
 
         <div class="post-meta">
@@ -239,14 +235,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-08-23 14:25:15" itemprop="dateCreated datePublished" datetime="2022-08-23T14:25:15+08:00">2022-08-23</time>
+              <time title="创建时间：2022-08-22 14:25:15" itemprop="dateCreated datePublished" datetime="2022-08-22T14:25:15+08:00">2022-08-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-11 14:35:32" itemprop="dateModified" datetime="2022-09-11T14:35:32+08:00">2022-09-11</time>
+                <time title="修改时间：2022-09-11 14:33:16" itemprop="dateModified" datetime="2022-09-11T14:33:16+08:00">2022-09-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,14 +267,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>383</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -290,29 +286,202 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="1-1-wire和reg"><a href="#1-1-wire和reg" class="headerlink" title="1.1 wire和reg"></a>1.1 wire和reg</h2><p>wire会被综合为一截导线,reg会被综合为一个寄存器.</p>
-<h2 id="1-2-D触发器"><a href="#1-2-D触发器" class="headerlink" title="1.2 D触发器"></a>1.2 D触发器</h2><pre><code>always @(posedge clk) begin 
-    q &lt;= d;
-end
-</code></pre>
+        <h2 id="1-可综合不可综合的定义"><a href="#1-可综合不可综合的定义" class="headerlink" title="1. 可综合不可综合的定义"></a>1. 可综合不可综合的定义</h2><p>HDL有两种基本的用途：<strong>系统仿真</strong>和<strong>设计实现</strong>。所有的HDL都可用于仿真，但并非所有的HDL描述都可综合。例如行为级语法就是一种不可综合的代码，通常用于写仿真测试文件。</p>
+<ul>
+<li><strong>可综合：</strong> 所编写的代码<strong>有</strong>对应具体的电路结构。</li>
+<li><strong>不可综合：</strong> 所编写代码<strong>没有</strong>对应的具体的电路结构。</li>
+</ul>
 <span id="more"></span>
 
-<h2 id="1-3-多路选择器"><a href="#1-3-多路选择器" class="headerlink" title="1.3 多路选择器"></a>1.3 多路选择器</h2><p>if会被总综合为一个二选一选择器。<br><img src="https://img-blog.csdnimg.cn/2019052010261364.png" alt=
-"二选一选择器" ></p>
-<p>case会被综合成n选一多路器。<br><img src="https://img-blog.csdnimg.cn/20200612092955461.png
-" alt="多路选择器" ></p>
-<p>if语句和组合逻辑下的case语句，他们的条件是<strong>有优先级的</strong>，从上到下优先级递减。<br>优先级：越靠近输出，优先级越高。if else 结构if的优先级最高；多if 结构最后一个if优先级最高。</p>
-<pre><code>always @(posedge clk) begin 
-    if(sel) 
-        q &lt;=a;
-    else
-        q &lt;=b;
-end
+<h2 id="2-可综合语句与不可综合语句"><a href="#2-可综合语句与不可综合语句" class="headerlink" title="2. 可综合语句与不可综合语句"></a>2. 可综合语句与不可综合语句</h2><h3 id="2-1-所有综合工具都支持的结构"><a href="#2-1-所有综合工具都支持的结构" class="headerlink" title="2.1 所有综合工具都支持的结构"></a>2.1 所有综合工具都支持的结构</h3><pre><code>always,assign,begin,end,case,wire,tri,aupply0,supply1,reg,integer,default,for,function,and,nand,or,nor,xor,xnor,buf,not,bufif0,bufif1,notif0,notif1,if,inout,input,instantitation,module,negedge,posedge,operators,output,parameter.
 </code></pre>
-<p>未完待续，待补齐Verilog综合之后电路原理图…</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lianglei665/article/details/114636381">FPGA中常见语法综合后的电路</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45912567/article/details/106707795#:~:text=FPGA%20%E4%B8%AD%20%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%20%E7%BB%BC%E5%90%88%20%E5%90%8E%20%E7%9A%84%E7%94%B5%E8%B7%AF%20%E4%B8%8E%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%EF%BC%8CHDL%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%20%E7%94%B5%E8%B7%AF,%E7%9A%84%20%E8%BF%87%E7%A8%8B%E6%97%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%B0%86%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%20%E7%9A%84%20%E6%80%9D%E6%83%B3%E5%B8%A6%E5%85%A5%E5%88%B0HDL%E8%AF%AD%E8%A8%80%E4%B9%A6%E5%86%99%E4%B8%8A%E9%9D%A2%E6%9D%A5%EF%BC%8C%E8%80%8C%E6%98%AF%E9%9C%80%E8%A6%81%E6%97%B6%E5%88%BB%E6%98%8E%E7%99%BD%E8%87%AA%E5%B7%B1%E6%89%80%E5%86%99%20%E7%9A%84%20%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%20%E7%9A%84%20%E7%A1%AC%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82">verilog 中if语句和case语句综合成的电路</a></li>
+<table>
+<thead>
+<tr>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">端口信号</td>
+<td align="center">inout，input，output</td>
+<td align="center">端口信号只有 3 种</td>
+</tr>
+<tr>
+<td align="center">参数</td>
+<td align="center">parameter, localparam</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">信号变量</td>
+<td align="center">wire, reg, tri, integer</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">模块</td>
+<td align="center">module</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">门级原语</td>
+<td align="center">and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，supply0，supply1</td>
+<td align="center">直接调用例化即可</td>
+</tr>
+<tr>
+<td align="center">例化</td>
+<td align="center">支持模块例化、门级原语例化等</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">函数与任务</td>
+<td align="center">function, task</td>
+<td align="center">支持不含时序结构的表述</td>
+</tr>
+<tr>
+<td align="center">连续赋值</td>
+<td align="center">assign</td>
+<td align="center">不支持带有延迟的表述</td>
+</tr>
+<tr>
+<td align="center">过程赋值</td>
+<td align="center">always, begin, end</td>
+<td align="center">可设计时序逻辑或组合逻辑</td>
+</tr>
+<tr>
+<td align="center">条件语句</td>
+<td align="center">if, case, default</td>
+<td align="center">条件中不能包含”z”或”x”的比较</td>
+</tr>
+<tr>
+<td align="center">循环语句</td>
+<td align="center">for, while, forever,while, forever</td>
+<td align="center">必须包含 @(posedge clk) 或 @(negedge clk), 避免组合逻辑回路</td>
+</tr>
+<tr>
+<td align="center">边沿触发</td>
+<td align="center">negedge，posedge</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">操作符</td>
+<td align="center">支持除&#x3D;&#x3D;&#x3D;和!&#x3D;&#x3D;以外的所有操作符</td>
+<td align="center">—</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-综合工具可能支持的的结构"><a href="#2-2-综合工具可能支持的的结构" class="headerlink" title="2.2 综合工具可能支持的的结构"></a>2.2 综合工具可能支持的的结构</h3><pre><code>casex,casez,wand,triand,wor,trior,real,disable,forever,arrays,memories,repeat,task,while.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x&#x2F;z</td>
+<td align="center">条件语句casex, casez</td>
+<td align="center">有些综合工具能识别该语句中的非”x&#x2F;z”比较逻辑</td>
+</tr>
+<tr>
+<td align="center">不同强度的线网</td>
+<td align="center">wand，triand，wor，trior</td>
+<td align="center">当信号有多个驱动源时需要使用但现在数字设计基本摒弃了这些变量类型</td>
+</tr>
+<tr>
+<td align="center">实数变量</td>
+<td align="center">real</td>
+<td align="center">往往用于仿真时的精确计算</td>
+</tr>
+<tr>
+<td align="center">过程终止</td>
+<td align="center">disable</td>
+<td align="center">终止过程块执行，大多数综合工具不支持该命令</td>
+</tr>
+<tr>
+<td align="center">循环语句</td>
+<td align="center">repeat, while, forever</td>
+<td align="center">repeat常用作仿真中语句循环执行固定次数，while, forever循环次数为常量时也可能可综合</td>
+</tr>
+<tr>
+<td align="center">用户自定义原语</td>
+<td align="center">UDP</td>
+<td align="center">其实目前大多数综合工具都支持UDP，只是某些古老的综合工具不会识别</td>
+</tr>
+<tr>
+<td align="center">过程连续赋值</td>
+<td align="center">assign, deassign</td>
+<td align="center">工具大多不支持该操作下reg数据类型的综合，<strong>支持该操作下wire数据类型的综合</strong>。</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-所有综合工具都不支持的结构"><a href="#2-3-所有综合工具都不支持的结构" class="headerlink" title="2.3 所有综合工具都不支持的结构"></a>2.3 所有综合工具都不支持的结构</h3><pre><code>time,defparam,$finish,fork,join,initial,delays,UDP,wait,#.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">结构类型</th>
+<th align="center">关键字</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">变量类型</td>
+<td align="center">time</td>
+<td align="center">仿真时使用的时间型变量</td>
+</tr>
+<tr>
+<td align="center">系统任务</td>
+<td align="center">—</td>
+<td align="center">大多数系统任务都是辅助仿真，不能综合为实际电路。例如 $display, $fopen, $finish 等。</td>
+</tr>
+<tr>
+<td align="center">过程结构</td>
+<td align="center">initial</td>
+<td align="center">initial常用作仿真时信号赋初值操作或控制激励信号的时序</td>
+</tr>
+<tr>
+<td align="center">并行语句</td>
+<td align="center">fork, join</td>
+<td align="center">常用作仿真时并行结构的描述always @(posedge clk) 描述的并行结构可综合</td>
+</tr>
+<tr>
+<td align="center">延迟语句</td>
+<td align="center">#</td>
+<td align="center">所有带延迟标志”#”的表述均不可综合，但仿真时电路中会有延时，综合时也不会报错</td>
+</tr>
+<tr>
+<td align="center">电平敏感触发</td>
+<td align="center">wait</td>
+<td align="center">多用于仿真中信号的检测启动</td>
+</tr>
+<tr>
+<td align="center">强制赋值和释放</td>
+<td align="center">force, release</td>
+<td align="center">多用于仿真中阻断其他驱动源，对信号进行强制赋值</td>
+</tr>
+</tbody></table>
+<h2 id="3-设计可综合语句的要点"><a href="#3-设计可综合语句的要点" class="headerlink" title="3. 设计可综合语句的要点"></a>3. 设计可综合语句的要点</h2><p>使用 Verilog 进行数字设计时，需要遵循以下原则：可综合的结构在设计实现中使用，不可综合的结构在仿真中使用，有些综合工具支持有些不支持的结构尽量不使用。</p>
+<ol>
+<li>不使用initial初始化语句。</li>
+<li>不使用带有延时(# 10)的描述。</li>
+<li>不使用循环次数不确定的循环语句，forever、while和repeat。</li>
+<li>尽量采用同步方式设计电路。</li>
+<li>除非是关键路径设计，一般不采用调用门级元件来描述设计的方法，建议采用行为语句来完成设计。</li>
+<li>用always过程块描述组合逻辑，应在敏感信号列表中列出所有的输入信号。</li>
+<li>所有的内部寄存器都应该能够被复位，应尽量使用器件的全局复位端作为系统总的复位。</li>
+<li>用户自定义原语（UDP元件）是不可综合的，它只能用来建立门级元件的仿真模型。</li>
+<li>对时序逻辑描述和建模，应使用非阻塞赋值(&lt;&#x3D;) 。对组合逻辑描述和建模，用阻塞赋值(&#x3D;)。但在同一个过程块中，两种赋值方式不能混用。</li>
+<li>不能在一个以上的always过程块中对同一个变量赋值，并且对同一个赋值对象不能既使用阻塞式赋值，又使用非阻塞式赋值。</li>
+<li>组合电路如果不打算把变量推导成锁存器(latch)，那么必须在if语句或case语句的所有条件分支中都对变量明确地赋值。</li>
+<li>避免混合使用上升沿(posedge)和下降沿(negedge)触发的触发器。</li>
+<li>同一个变量的赋值不能受多个时钟控制，也不能受两种不同的时钟条件（或者不同的时钟沿）控制。</li>
+<li>避免在case语句的分支项中使用x值或z值。</li>
+</ol>
+<h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://www.eepw.com.cn/article/201605/290588.htm">verilog之可综合与不可综合</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/verilog2/verilog2-16vm3o60.html">Verilog 可综合性设计</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/350987657">FPGA建立可综合模型的原则</a></li>
 </ol>
 
     </div>
@@ -329,7 +498,7 @@ end
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zzh-sc.github.io/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/" title="可综合语句及其对应电路结构">https://zzh-sc.github.io/2022/08/23/可综合语句及其对应电路结构/</a>
+    <a href="https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/" title="可综合和不可综合">https://zzh-sc.github.io/2022/08/22/Verilog可综合和不可综合语句/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -341,7 +510,7 @@ end
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Verilog-HDL%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" rel="tag"># Verilog HDL相关知识</a>
-              <a href="/tags/%E9%83%A8%E5%88%86%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%9B%A0%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/" rel="tag"># 部分可综合语句及其对因电路结构</a>
+              <a href="/tags/%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/" rel="tag"># 可综合和不可综合语句</a>
           </div>
 
         
@@ -350,12 +519,12 @@ end
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/" rel="prev" title="可综合和不可综合">
-      <i class="fa fa-chevron-left"></i> 可综合和不可综合
+    <a href="/2022/08/11/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" rel="prev" title="胡言乱语">
+      <i class="fa fa-chevron-left"></i> 胡言乱语
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/" rel="next" title="testbench">
-      testbench <i class="fa fa-chevron-right"></i>
+    <a href="/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/" rel="next" title="可综合语句及其对应电路结构">
+      可综合语句及其对应电路结构 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -415,7 +584,7 @@ end
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-wire%E5%92%8Creg"><span class="nav-number">1.</span> <span class="nav-text">1.1 wire和reg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-D%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">1.2 D触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">1.3 多路选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">1. 可综合不可综合的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E4%B8%8E%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">2. 可综合语句与不可综合语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%89%80%E6%9C%89%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7%E9%83%BD%E6%94%AF%E6%8C%81%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 所有综合工具都支持的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7%E5%8F%AF%E8%83%BD%E6%94%AF%E6%8C%81%E7%9A%84%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 综合工具可能支持的的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%89%80%E6%9C%89%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7%E9%83%BD%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 所有综合工具都不支持的结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%BE%E8%AE%A1%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%A6%81%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">3. 设计可综合语句的要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">4.</span> <span class="nav-text">4. 参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zzh-sc.github.io/2022/09/25/%E5%9F%BA%E4%BA%8EFPGA%E7%9A%84%E8%B7%A8%E6%97%B6%E9%92%9F%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</loc>
+    
+    <lastmod>2022-09-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zzh-sc.github.io/2022/09/20/2022%E5%9B%BD%E5%BA%86%E6%94%BE%E5%81%87%E5%AE%89%E6%8E%92/</loc>
     
     <lastmod>2022-09-25</lastmod>
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://zzh-sc.github.io/2022/09/18/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE3B-%E7%BC%96%E8%AF%91OpenWrt%E5%9B%BA%E4%BB%B6/</loc>
+    <loc>https://zzh-sc.github.io/2022/09/18/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E7%BC%96%E8%AF%91OpenWrt%E5%9B%BA%E4%BB%B6/</loc>
     
     <lastmod>2022-09-21</lastmod>
     
@@ -119,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://zzh-sc.github.io/2022/08/22/%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88/</loc>
+    <loc>https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/</loc>
     
     <lastmod>2022-09-11</lastmod>
     
