@@ -21,22 +21,23 @@
     var CONFIG = {"hostname":"zzh-sc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2},"disqus":{"text":"Load Disqus","order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="论文名称A Survey of Deep Learning-based Object Detection Abstract1. 写作目的  In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.  2. 文章内容   we first analyze">
+  <meta name="description" content="1. testbenchtestbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object Detection Paper">
-<meta property="og:url" content="https://zzh-sc.github.io/2022/09/11/Object-Detection-Paper/index.html">
+<meta property="og:title" content="testbench">
+<meta property="og:url" content="https://zzh-sc.github.io/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/index.html">
 <meta property="og:site_name" content="zhihao&#39;s Blog">
-<meta property="og:description" content="论文名称A Survey of Deep Learning-based Object Detection Abstract1. 写作目的  In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.  2. 文章内容   we first analyze">
+<meta property="og:description" content="1. testbenchtestbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img1.imgtp.com/2022/08/29/qlYezasN.png">
-<meta property="article:published_time" content="2022-09-11T06:54:23.000Z">
-<meta property="article:modified_time" content="2022-09-11T06:57:25.924Z">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png">
+<meta property="article:published_time" content="2022-08-24T06:25:15.000Z">
+<meta property="article:modified_time" content="2022-09-11T06:38:24.577Z">
 <meta property="article:author" content="zhihao">
-<meta property="article:tag" content="目标检测文献综述">
+<meta property="article:tag" content="Verilog HDL相关知识">
+<meta property="article:tag" content="testbench">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img1.imgtp.com/2022/08/29/qlYezasN.png">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png">
 
-<link rel="canonical" href="https://zzh-sc.github.io/2022/09/11/Object-Detection-Paper/">
+<link rel="canonical" href="https://zzh-sc.github.io/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/">
 
 
 <script id="page-configurations">
@@ -49,7 +50,7 @@
   };
 </script>
 
-  <title>Object Detection Paper | zhihao's Blog</title>
+  <title>testbench | zhihao's Blog</title>
   
 
 
@@ -209,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/09/11/Object-Detection-Paper/">
+    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img1.imgtp.com/2022/08/11/vgbXjbVR.JPG">
@@ -222,7 +223,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Object Detection Paper
+          testbench
         </h1>
 
         <div class="post-meta">
@@ -235,17 +236,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-11 14:54:23 / 修改时间：14:57:25" itemprop="dateCreated datePublished" datetime="2022-09-11T14:54:23+08:00">2022-09-11</time>
+              <time title="创建时间：2022-08-24 14:25:15" itemprop="dateCreated datePublished" datetime="2022-08-24T14:25:15+08:00">2022-08-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-11 14:38:24" itemprop="dateModified" datetime="2022-09-11T14:38:24+08:00">2022-09-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                  <a href="/categories/FPGA/" itemprop="url" rel="index"><span itemprop="name">FPGA</span></a>
                 </span>
             </span>
 
@@ -262,14 +269,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -281,82 +288,106 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="论文名称"><a href="#论文名称" class="headerlink" title="论文名称"></a>论文名称</h1><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.09408">A Survey of Deep Learning-based Object Detection</a></p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><strong>1. 写作目的</strong></p>
-<blockquote>
-<p>In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.</p>
-</blockquote>
-<p><strong>2. 文章内容</strong></p>
-<blockquote>
-<ol>
-<li>we first analyze the methods of existing typical detection models and describe the benchmark datasets.</li>
-<li>Afterwards and primarily, we provide a comprehensive overview of a variety of object detection methods in a systematic manner, covering the one-stage and two-stage detectors.</li>
-<li>Moreover, we list the traditional and new applications. Some representative branches of object detection are analyzed as well.</li>
-<li>Finally, we discuss the architecture of exploiting these object detection methods to build an effective and efficient system and point out a set of development trends to better follow the state-of-the-art algorithms and further research.</li>
-</ol>
-</blockquote>
+        <h2 id="1-testbench"><a href="#1-testbench" class="headerlink" title="1. testbench"></a>1. testbench</h2><p>testbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工具。</p>
 <span id="more"></span>
 
-<h2 id="Ⅰ-Introduction"><a href="#Ⅰ-Introduction" class="headerlink" title="Ⅰ.Introduction"></a>Ⅰ.Introduction</h2><h3 id="1-现存的目标检测器分类及其特点"><a href="#1-现存的目标检测器分类及其特点" class="headerlink" title="1. 现存的目标检测器分类及其特点"></a>1. 现存的目标检测器分类及其特点</h3><p><strong>1.1 one-stage：YOLO,SSD.</strong></p>
-<blockquote>
-<p>one-stage detectors achieve high inference speed.</p>
-</blockquote>
-<p><strong>1.2 two-stage：Faster R-CNN.</strong></p>
-<blockquote>
-<p>Two-stage detectors have high localization and object recognition accuracy.</p>
-</blockquote>
-<ol>
-<li>The first stage, called RPN, a Region Proposal Network, proposes candidate object bounding boxes.</li>
-<li>The second stage, features are extracted by RoI Pool(RoI Pooling) operation from each candidate box for the following classification and bounding-box regression tasks .</li>
-</ol>
-<p><strong>1.3两类对比</strong></p>
-<blockquote>
-<ol>
-<li>Fig(a) shows the basic architecture of two-stage detectors.</li>
-<li>Fig(b) exhibits the basic architecture of one-stage detectors.</li>
-</ol>
-</blockquote>
-<p>Furthermore, the one-stage detectors propose predicted boxes from input images directly without region proposal step, thus they are time efficient and can be used for real-time devices.<br><img src="https://img1.imgtp.com/2022/08/29/qlYezasN.png" alt="1661761826298.png"></p>
-<h2 id="Backbone-Networks"><a href="#Backbone-Networks" class="headerlink" title="Backbone Networks"></a>Backbone Networks</h2><p>Backbone network is acting as the basic feature extractor for object detection task which takes images as input and outputs feature maps of the corresponding input image.</p>
-<p>Most of backbone networks for detection are the network for classification task taking out the last fully connected layers.</p>
-<h2 id="Typical-Baselines"><a href="#Typical-Baselines" class="headerlink" title="Typical Baselines"></a>Typical Baselines</h2><ul>
-<li><strong>Two-stage Detectors</strong><ol>
-<li>R-CNN</li>
-<li>Fast R-CNN</li>
-<li>Faster R-CNN</li>
-<li>Mask R-CNN</li>
-</ol>
-</li>
-<li><strong>One-stage Detectors</strong><ol>
-<li>YOLO series</li>
-<li>SSD</li>
-<li>DSSD</li>
-<li>RetinaNet</li>
-<li>M2Det</li>
-<li>RefineDet</li>
-</ol>
-</li>
-<li><strong>Latest Detectors</strong><ol>
-<li>Relation Networks for Object Detection</li>
-<li>DCNv2</li>
-<li>NAS-FPN</li>
-</ol>
-</li>
-</ul>
-<h2 id="Datasets-and-Metrics"><a href="#Datasets-and-Metrics" class="headerlink" title="Datasets and Metrics"></a>Datasets and Metrics</h2><ol>
-<li>PASCAL VOC dataset</li>
-<li>MS COCO benchmark</li>
-<li>ImageNet benchmark</li>
-<li>VisDrone2018 benchmark</li>
-<li>Open Images V5</li>
-<li>Pedestrian detection datasets</li>
-</ol>
-<h2 id="Analysis-of-general-image-object-detection-methods"><a href="#Analysis-of-general-image-object-detection-methods" class="headerlink" title="Analysis of general image object detection methods"></a>Analysis of general image object detection methods</h2><p>Deep neural network based object detection pipelines have four steps in general, image pre-processing, feature extraction, classification and localization, post-processing.</p>
-<ol>
-<li>Firstly, raw images from the dataset cant be fed into the network directly.<br>Therefore, we need to resize them to any special sizes and make them clearer, such as enhancing brightness, color, contrast. Data augmentation is also available to meet some requirements, such as flipping, rotation, scaling, cropping, translation, adding Gaussian noise. In addition, GANs  (generative adversarial networks) can generate new images to enrich the diversity of input according to people’s needs. For more details about data augmentation, please refer to for more details.</li>
-<li>Secondly, feature extraction is a key step for further detection.<br>The feature quality directly determines the upper bound of subsequent tasks like classification and localization.</li>
-<li>Thirdly, the detector head is responsible to propose and refine bounding box concluding classification scores and bounding box coordinates.</li>
-<li>At last, the post-processing step deletes any weak detecting results.<br>For example, NMS is a widely used method in which the highest scoring object deletes its nearby objects with inferior classification scores.</li>
+<h2 id="2-testbench组成"><a href="#2-testbench组成" class="headerlink" title="2. testbench组成"></a>2. testbench组成</h2><p><img src="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png" alt=
+"testbench组成结构图"><br>其中testbench最基本的结构包括信号声明、激励和模块例化,复位和时钟产生部分，也可以看做激励。根据设计的复杂度，需要引入时钟和复位部分。当然更为复杂的设计，激励部分也会更加复杂。根据自己的验证需求，选择是否需要自校验和停止仿真部分。</p>
+<h2 id="3-testbench模板"><a href="#3-testbench模板" class="headerlink" title="3.testbench模板"></a>3.testbench模板</h2><pre><code>`timescale 1ns/1ps  //时间精度
+`define    Clock 20 //时钟周期
+
+module u_design_tb;
+//==================&lt;端口&gt;==================================================
+reg                         clk                 ; //时钟，50Mhz
+reg                         rst_n               ; //复位，低电平有效
+reg  [XX:0]                 in                  ; //
+wire [XX:0]                 out                 ; //
+
+//--------------------------------------------------------------------------
+//--    模块例化
+//--------------------------------------------------------------------------
+u_design u_design_inst
+(
+    .clk                    (clk                ),
+    .rst_n                  (rst_n              ),
+    .in                     (in                 ),
+    .out                    (out                )
+);
+
+//----------------------------------------------------------------------
+//--    时钟信号和复位信号
+//----------------------------------------------------------------------
+initial begin
+    clk = 0;
+    forever
+        #(`Clock/2) clk = ~clk;
+end
+
+initial begin
+    rst_n = 0; #(`Clock*20+1);
+    rst_n = 1;
+end
+
+//----------------------------------------------------------------------
+//--    设计输入信号
+//----------------------------------------------------------------------
+initial begin
+    in = 0;
+    #(`Clock*20+2); //初始化完成
+
+    $stop;
+end
+endmodule
+</code></pre>
+<h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度
+module fifo_wr_tb();
+ //==================&lt;端口&gt;==================================================
+reg clk;             
+reg rst_n;
+reg start_write;
+reg start_send;
+wire writing;
+wire sending;
+wire uart_txd;
+//==================&lt;模块例化&gt;==================================================
+fifo_top u_fifo_wr(
+    .sys_clk(clk),
+    .sys_rst_n(rst_n),
+    .key_0(start_write),
+    .key_1(start_send),
+    .led_0(writing),
+    .led_1(sending),
+    .uart_txd(uart_txd)
+);
+
+//==================&lt;模块时钟&gt;==================================================
+initial clk = 1;
+always #10 clk =!clk;
+
+initial begin
+    rst_n = 0;
+    start_write = 1;
+    start_send = 1;
+    #201
+    rst_n = 1;
+ //==================&lt;模块输入信号&gt;==================================================
+    start_write = 0; //开始fifo写入
+    #30_000_000;     //按键延时＋去抖需要20ms以上
+    start_write = 1;
+    #10_000_000;     //等待写入完毕
+    
+    start_send = 0;  //开始串口发送
+    #30_000_000;     //按键延时＋去抖需要20ms以上
+    start_send = 1;
+    #30_000_000;
+    $stop;
+end
+endmodule
+</code></pre>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37028619">十天学会FPGA之三——testbench的写法</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xianyufpga/p/11353455.html">Testbench编写技巧</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/verilog-testbench.html">Verilog 仿真激励</a></li>
 </ol>
 
     </div>
@@ -373,7 +404,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zzh-sc.github.io/2022/09/11/Object-Detection-Paper/" title="Object Detection Paper">https://zzh-sc.github.io/2022/09/11/Object-Detection-Paper/</a>
+    <a href="https://zzh-sc.github.io/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/" title="testbench">https://zzh-sc.github.io/2022/08/24/testbench的书写/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -384,7 +415,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E7%BB%BC%E8%BF%B0/" rel="tag"># 目标检测文献综述</a>
+              <a href="/tags/Verilog-HDL%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" rel="tag"># Verilog HDL相关知识</a>
+              <a href="/tags/testbench/" rel="tag"># testbench</a>
           </div>
 
         
@@ -393,12 +425,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="深度学习-基础知识">
-      <i class="fa fa-chevron-left"></i> 深度学习-基础知识
+    <a href="/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/" rel="prev" title="可综合语句及其对应电路结构">
+      <i class="fa fa-chevron-left"></i> 可综合语句及其对应电路结构
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/09/11/welcome/" rel="next" title="about me">
-      about me <i class="fa fa-chevron-right"></i>
+    <a href="/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="深度学习-基础知识">
+      深度学习-基础知识 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -458,7 +490,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%90%8D%E7%A7%B0"><span class="nav-number">1.</span> <span class="nav-text">论文名称</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A0-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Ⅰ.Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%B0%E5%AD%98%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%99%A8%E5%88%86%E7%B1%BB%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 现存的目标检测器分类及其特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backbone-Networks"><span class="nav-number">1.3.</span> <span class="nav-text">Backbone Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typical-Baselines"><span class="nav-number">1.4.</span> <span class="nav-text">Typical Baselines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datasets-and-Metrics"><span class="nav-number">1.5.</span> <span class="nav-text">Datasets and Metrics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-general-image-object-detection-methods"><span class="nav-number">1.6.</span> <span class="nav-text">Analysis of general image object detection methods</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-testbench"><span class="nav-number">1.</span> <span class="nav-text">1. testbench</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-testbench%E7%BB%84%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">2. testbench组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-testbench%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.</span> <span class="nav-text">3.testbench模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-testbench%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">4. testbench测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

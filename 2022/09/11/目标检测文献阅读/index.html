@@ -21,20 +21,22 @@
     var CONFIG = {"hostname":"zzh-sc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2},"disqus":{"text":"Load Disqus","order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="你好，欢迎来到我的博客。关于我：24岁，属虎，目前在西南某一所不知名双非院校攻读研究生学位，有一位挚爱的女友。平常我会在这里记录自己生活中的日常琐事和一些学习到的知识。如果对我分享的内容有所疑问或者有什么需要我帮助的地方，你可以通过邮件与我取得联系，邮件地址是&amp;#116;&amp;#x68;&amp;#x65;&amp;#98;&amp;#101;&amp;#x73;&amp;#116;&amp;#122;&amp;#104;&amp;#105;&amp;#104;&amp;#x61">
+  <meta name="description" content="论文名称A Survey of Deep Learning-based Object Detection Abstract1. 写作目的  In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.  2. 文章内容   we first analyze">
 <meta property="og:type" content="article">
-<meta property="og:title" content="about me">
-<meta property="og:url" content="https://zzh-sc.github.io/2022/09/11/welcome/index.html">
+<meta property="og:title" content="Object Detection Paper">
+<meta property="og:url" content="https://zzh-sc.github.io/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="zhihao&#39;s Blog">
-<meta property="og:description" content="你好，欢迎来到我的博客。关于我：24岁，属虎，目前在西南某一所不知名双非院校攻读研究生学位，有一位挚爱的女友。平常我会在这里记录自己生活中的日常琐事和一些学习到的知识。如果对我分享的内容有所疑问或者有什么需要我帮助的地方，你可以通过邮件与我取得联系，邮件地址是&amp;#116;&amp;#x68;&amp;#x65;&amp;#98;&amp;#101;&amp;#x73;&amp;#116;&amp;#122;&amp;#104;&amp;#105;&amp;#104;&amp;#x61">
+<meta property="og:description" content="论文名称A Survey of Deep Learning-based Object Detection Abstract1. 写作目的  In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.  2. 文章内容   we first analyze">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-11T13:12:56.000Z">
-<meta property="article:modified_time" content="2022-09-25T06:57:50.757Z">
+<meta property="og:image" content="https://img1.imgtp.com/2022/08/29/qlYezasN.png">
+<meta property="article:published_time" content="2022-09-11T06:54:23.000Z">
+<meta property="article:modified_time" content="2022-09-11T06:57:25.924Z">
 <meta property="article:author" content="zhihao">
-<meta property="article:tag" content="about me">
+<meta property="article:tag" content="目标检测文献综述">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2022/08/29/qlYezasN.png">
 
-<link rel="canonical" href="https://zzh-sc.github.io/2022/09/11/welcome/">
+<link rel="canonical" href="https://zzh-sc.github.io/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">
 
 
 <script id="page-configurations">
@@ -47,7 +49,7 @@
   };
 </script>
 
-  <title>about me | zhihao's Blog</title>
+  <title>Object Detection Paper | zhihao's Blog</title>
   
 
 
@@ -207,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/09/11/welcome/">
+    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img1.imgtp.com/2022/08/11/vgbXjbVR.JPG">
@@ -220,7 +222,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          about me
+          Object Detection Paper
         </h1>
 
         <div class="post-meta">
@@ -228,25 +230,24 @@
        
 		 <span class="post-time">
           
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-09-11 21:12:56" itemprop="dateCreated datePublished" datetime="2022-09-11T21:12:56+08:00">2022-09-11</time>
+              <time title="创建时间：2022-09-11 14:54:23 / 修改时间：14:57:25" itemprop="dateCreated datePublished" datetime="2022-09-11T14:54:23+08:00">2022-09-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-25 14:57:50" itemprop="dateModified" datetime="2022-09-25T14:57:50+08:00">2022-09-25</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -261,14 +262,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>280</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -280,7 +281,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>你好，欢迎来到我的博客。<br>关于我：24岁，属虎，目前在西南某一所不知名双非院校攻读研究生学位，有一位挚爱的女友。平常我会在这里记录自己生活中的日常琐事和一些学习到的知识。如果对我分享的内容有所疑问或者有什么需要我帮助的地方，你可以通过邮件与我取得联系，邮件地址是<strong><a href="mailto:&#116;&#x68;&#x65;&#98;&#101;&#x73;&#116;&#122;&#104;&#105;&#104;&#x61;&#111;&#64;&#x66;&#x6f;&#120;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#116;&#x68;&#x65;&#98;&#101;&#x73;&#116;&#122;&#104;&#105;&#104;&#x61;&#111;&#64;&#x66;&#x6f;&#120;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></strong> 。</p>
+        <h1 id="论文名称"><a href="#论文名称" class="headerlink" title="论文名称"></a>论文名称</h1><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.09408">A Survey of Deep Learning-based Object Detection</a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><strong>1. 写作目的</strong></p>
+<blockquote>
+<p>In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.</p>
+</blockquote>
+<p><strong>2. 文章内容</strong></p>
+<blockquote>
+<ol>
+<li>we first analyze the methods of existing typical detection models and describe the benchmark datasets.</li>
+<li>Afterwards and primarily, we provide a comprehensive overview of a variety of object detection methods in a systematic manner, covering the one-stage and two-stage detectors.</li>
+<li>Moreover, we list the traditional and new applications. Some representative branches of object detection are analyzed as well.</li>
+<li>Finally, we discuss the architecture of exploiting these object detection methods to build an effective and efficient system and point out a set of development trends to better follow the state-of-the-art algorithms and further research.</li>
+</ol>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Ⅰ-Introduction"><a href="#Ⅰ-Introduction" class="headerlink" title="Ⅰ.Introduction"></a>Ⅰ.Introduction</h2><h3 id="1-现存的目标检测器分类及其特点"><a href="#1-现存的目标检测器分类及其特点" class="headerlink" title="1. 现存的目标检测器分类及其特点"></a>1. 现存的目标检测器分类及其特点</h3><p><strong>1.1 one-stage：YOLO,SSD.</strong></p>
+<blockquote>
+<p>one-stage detectors achieve high inference speed.</p>
+</blockquote>
+<p><strong>1.2 two-stage：Faster R-CNN.</strong></p>
+<blockquote>
+<p>Two-stage detectors have high localization and object recognition accuracy.</p>
+</blockquote>
+<ol>
+<li>The first stage, called RPN, a Region Proposal Network, proposes candidate object bounding boxes.</li>
+<li>The second stage, features are extracted by RoI Pool(RoI Pooling) operation from each candidate box for the following classification and bounding-box regression tasks .</li>
+</ol>
+<p><strong>1.3两类对比</strong></p>
+<blockquote>
+<ol>
+<li>Fig(a) shows the basic architecture of two-stage detectors.</li>
+<li>Fig(b) exhibits the basic architecture of one-stage detectors.</li>
+</ol>
+</blockquote>
+<p>Furthermore, the one-stage detectors propose predicted boxes from input images directly without region proposal step, thus they are time efficient and can be used for real-time devices.<br><img src="https://img1.imgtp.com/2022/08/29/qlYezasN.png" alt="1661761826298.png"></p>
+<h2 id="Backbone-Networks"><a href="#Backbone-Networks" class="headerlink" title="Backbone Networks"></a>Backbone Networks</h2><p>Backbone network is acting as the basic feature extractor for object detection task which takes images as input and outputs feature maps of the corresponding input image.</p>
+<p>Most of backbone networks for detection are the network for classification task taking out the last fully connected layers.</p>
+<h2 id="Typical-Baselines"><a href="#Typical-Baselines" class="headerlink" title="Typical Baselines"></a>Typical Baselines</h2><ul>
+<li><strong>Two-stage Detectors</strong><ol>
+<li>R-CNN</li>
+<li>Fast R-CNN</li>
+<li>Faster R-CNN</li>
+<li>Mask R-CNN</li>
+</ol>
+</li>
+<li><strong>One-stage Detectors</strong><ol>
+<li>YOLO series</li>
+<li>SSD</li>
+<li>DSSD</li>
+<li>RetinaNet</li>
+<li>M2Det</li>
+<li>RefineDet</li>
+</ol>
+</li>
+<li><strong>Latest Detectors</strong><ol>
+<li>Relation Networks for Object Detection</li>
+<li>DCNv2</li>
+<li>NAS-FPN</li>
+</ol>
+</li>
+</ul>
+<h2 id="Datasets-and-Metrics"><a href="#Datasets-and-Metrics" class="headerlink" title="Datasets and Metrics"></a>Datasets and Metrics</h2><ol>
+<li>PASCAL VOC dataset</li>
+<li>MS COCO benchmark</li>
+<li>ImageNet benchmark</li>
+<li>VisDrone2018 benchmark</li>
+<li>Open Images V5</li>
+<li>Pedestrian detection datasets</li>
+</ol>
+<h2 id="Analysis-of-general-image-object-detection-methods"><a href="#Analysis-of-general-image-object-detection-methods" class="headerlink" title="Analysis of general image object detection methods"></a>Analysis of general image object detection methods</h2><p>Deep neural network based object detection pipelines have four steps in general, image pre-processing, feature extraction, classification and localization, post-processing.</p>
+<ol>
+<li>Firstly, raw images from the dataset cant be fed into the network directly.<br>Therefore, we need to resize them to any special sizes and make them clearer, such as enhancing brightness, color, contrast. Data augmentation is also available to meet some requirements, such as flipping, rotation, scaling, cropping, translation, adding Gaussian noise. In addition, GANs  (generative adversarial networks) can generate new images to enrich the diversity of input according to people’s needs. For more details about data augmentation, please refer to for more details.</li>
+<li>Secondly, feature extraction is a key step for further detection.<br>The feature quality directly determines the upper bound of subsequent tasks like classification and localization.</li>
+<li>Thirdly, the detector head is responsible to propose and refine bounding box concluding classification scores and bounding box coordinates.</li>
+<li>At last, the post-processing step deletes any weak detecting results.<br>For example, NMS is a widely used method in which the highest scoring object deletes its nearby objects with inferior classification scores.</li>
+</ol>
 
     </div>
 
@@ -296,7 +373,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zzh-sc.github.io/2022/09/11/welcome/" title="about me">https://zzh-sc.github.io/2022/09/11/welcome/</a>
+    <a href="https://zzh-sc.github.io/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" title="Object Detection Paper">https://zzh-sc.github.io/2022/09/11/目标检测文献阅读/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -307,7 +384,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/about-me/" rel="tag"># about me</a>
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E7%BB%BC%E8%BF%B0/" rel="tag"># 目标检测文献综述</a>
           </div>
 
         
@@ -316,12 +393,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/09/11/Object-Detection-Paper/" rel="prev" title="Object Detection Paper">
-      <i class="fa fa-chevron-left"></i> Object Detection Paper
+    <a href="/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="深度学习-基础知识">
+      <i class="fa fa-chevron-left"></i> 深度学习-基础知识
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/09/18/OpenWrt%E7%B3%BB%E7%BB%9F%E7%BC%96%E8%AF%91/" rel="next" title="OpenWrt系统编译">
-      OpenWrt系统编译 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/11/%E7%BD%AE%E9%A1%B6%E6%AC%A2%E8%BF%8E%E9%A1%B5/" rel="next" title="about me">
+      about me <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -381,6 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%90%8D%E7%A7%B0"><span class="nav-number">1.</span> <span class="nav-text">论文名称</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A0-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Ⅰ.Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%B0%E5%AD%98%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%99%A8%E5%88%86%E7%B1%BB%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 现存的目标检测器分类及其特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backbone-Networks"><span class="nav-number">1.3.</span> <span class="nav-text">Backbone Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typical-Baselines"><span class="nav-number">1.4.</span> <span class="nav-text">Typical Baselines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datasets-and-Metrics"><span class="nav-number">1.5.</span> <span class="nav-text">Datasets and Metrics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-general-image-object-detection-methods"><span class="nav-number">1.6.</span> <span class="nav-text">Analysis of general image object detection methods</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
