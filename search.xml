@@ -809,4 +809,21 @@ end
     <content><![CDATA[<p>待补充…</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>HDLBits_day1</title>
+    <url>/2022/09/29/HDLBits-day1/</url>
+    <content><![CDATA[<h1 id="HDLBits刷题"><a href="#HDLBits刷题" class="headerlink" title="HDLBits刷题"></a>HDLBits刷题</h1><h2 id="Exams-x2F-ece241-2013-q12"><a href="#Exams-x2F-ece241-2013-q12" class="headerlink" title="Exams&#x2F;ece241 2013 q12"></a><a href="https://hdlbits.01xz.net/wiki/Exams/ece241_2013_q12">Exams&#x2F;ece241 2013 q12</a></h2><p><strong>Introduction</strong><br>In this question, you will design a circuit for an 8x1 memory, where writing to the memory is accomplished by shifting-in bits, and reading is “random access”, as in a typical RAM. You will then use the circuit to realize a 3-input logic function.</p>
+<p>First, create an 8-bit shift register with 8 D-type flip-flops. Label the flip-flop outputs from Q[0]…Q[7]. The shift register input should be called S, which feeds the input of Q[0] (MSB is shifted in first). The enable input controls whether to shift. Then, extend the circuit to have 3 additional inputs A,B,C and an output Z. The circuit’s behaviour should be as follows: when ABC is 000, Z&#x3D;Q[0], when ABC is 001, Z&#x3D;Q[1], and so on. Your circuit should contain ONLY the 8-bit shift register, and multiplexers. (Aside: this circuit is called a 3-input look-up-table (LUT)).</p>
+<span id="more"></span>
+<p><strong>Module Declaration</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br></pre></td></tr></table></figure>
+<p><strong>Answer</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br><span class="line">reg [7:0] Q;</span><br><span class="line">always@(posedge clk)begin</span><br><span class="line">    if(enable)begin</span><br><span class="line">        Q &lt;= &#123;Q[6:0],S&#125;;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">wire [2:0] sel;</span><br><span class="line">assign sel[2:0] = &#123;A,B,C&#125;;</span><br><span class="line">always @(*) begin  //组合逻辑</span><br><span class="line">    case(sel)</span><br><span class="line">        3&#x27;d0:Z &lt;= Q[0];</span><br><span class="line">        3&#x27;d1:Z &lt;= Q[1];</span><br><span class="line">        3&#x27;d2:Z &lt;= Q[2];</span><br><span class="line">        3&#x27;d3:Z &lt;= Q[3];</span><br><span class="line">        3&#x27;d4:Z &lt;= Q[4];</span><br><span class="line">        3&#x27;d5:Z &lt;= Q[5];</span><br><span class="line">        3&#x27;d6:Z &lt;= Q[6];</span><br><span class="line">        3&#x27;d7:Z &lt;= Q[7];</span><br><span class="line">    endcase</span><br><span class="line">end</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img1.imgtp.com/2022/09/29/xQqv6u1R.jpg" alt="1664454979.jpg"></p>
+]]></content>
+      <categories>
+        <category>HDLBits刷题</category>
+      </categories>
+  </entry>
 </search>
