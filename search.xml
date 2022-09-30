@@ -1,6 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>about me</title>
+    <url>/2022/09/11/%E7%BD%AE%E9%A1%B6%E6%AC%A2%E8%BF%8E%E9%A1%B5/</url>
+    <content><![CDATA[<p>你好，欢迎来到我的博客。<br>关于我：24岁，属虎，目前在西南某一所不知名双非院校攻读研究生学位，有一位挚爱的女友。平常我会在这里记录自己生活中的日常琐事和一些学习到的知识。如果对我分享的内容有所疑问或者有什么需要我帮助的地方，你可以通过邮件与我取得联系，邮件地址是<strong><a href="mailto:&#116;&#x68;&#101;&#x62;&#101;&#x73;&#116;&#122;&#104;&#x69;&#104;&#x61;&#111;&#64;&#102;&#x6f;&#120;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#116;&#x68;&#101;&#x62;&#101;&#x73;&#116;&#122;&#104;&#x69;&#104;&#x61;&#111;&#64;&#102;&#x6f;&#120;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></strong> 。</p>
+]]></content>
+      <tags>
+        <tag>about me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HDLBits-day3</title>
+    <url>/2022/09/30/HDLBits-day3/</url>
+    <content><![CDATA[<h1 id="Gates4"><a href="#Gates4" class="headerlink" title="Gates4"></a>Gates4</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Build a combinational circuit with four inputs, in[3:0].</p>
+<p>There are 3 outputs:</p>
+<p>out_and: output of a 4-input AND gate.<br>out_or: output of a 4-input OR gate.<br>out_xor: output of a 4-input XOR gate.<br>To review the AND, OR, and XOR operators, see andgate, norgate, and xnorgate.</p>
+<h2 id="Module-Declaration"><a href="#Module-Declaration" class="headerlink" title="Module Declaration"></a>Module Declaration</h2><pre><code>module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+</code></pre><h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><pre><code>module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+    assign out_and = in[3]&amp;in[2]&amp;in[1]&amp;in[0]; //多位与
+    assign out_or = in[3]|in[2]|in[1]|in[0];  //多位或
+    assign out_xor = ^in;  //多位异或
+endmodule
+</code></pre><p><img src="https://img1.imgtp.com/2022/09/30/VxUJB7PK.jpg" alt="1664504182.jpg"></p>
+<p><strong>异或运算⊕</strong>:两个逻辑变量相异为1，相同为0，$ F = A⊕B  = A·B’ + A’· B$。</p>
+<p><strong>多异或连续运算</strong>：将前两个数的运算结果，与第三个数继续运算；再将结果与第四个运算；直到最后得出结果，其中的每一步都要按照相应运算的规则进行。</p>
+<pre><code>1⊕0⊕1⊕1⊕1=0
+1⊕0⊕1⊕0⊕1=1
+0⊕0⊕1⊕0=1
+0⊕1⊕1⊕0=0
+</code></pre><ol>
+<li>若含“奇数”个“真命题（1）”，则结果为“真（1）”；</li>
+<li>若含“偶数”个“真命题（1）”，则结果为“假（0）”；（注：零个也是偶数个）</li>
+</ol>
+<p><strong>同或运算⊙</strong>：两个逻辑变量相异为0，相同为1,$ F = A⊙B  = A·B + A’· B’ $。<br><strong>多同或连续运算</strong>：$ a ⊙ 1 = a; a⊙ 0⊙ 0 = a $ 。同或运算就是观察输入中0的个数。奇数个0则结果为0，偶数个0则结果为1。</p>
+<p><strong>归约操作</strong>：</p>
+<ol>
+<li>归约与（&amp;）：全部是一。</li>
+<li>归约与非（~&amp;）：有一个零。</li>
+<li>归约或（|）：有一个一。</li>
+<li>归约或非（~|）：全部是零。</li>
+<li>归约异或（^）：一的个数是奇数。</li>
+<li><p>归约同或（~^）：一的个数是偶数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = 4&#x27;b1010 ;</span><br><span class="line">&amp;A ;      //结果为 1 &amp; 0 &amp; 1 &amp; 0 = 1&#x27;b0，可用来判断变量A是否全1</span><br><span class="line">~|A ;     //结果为 ~(1 | 0 | 1 | 0) = 1&#x27;b0, 可用来判断变量A是否为全0</span><br><span class="line">^A ;      //结果为 1 ^ 0 ^ 1 ^ 0 = 1&#x27;b0</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1></li>
+<li><p><a href="https://blog.csdn.net/weixin_44985880/article/details/107895486">多异或”和“多同或”连续运算问题</a></p>
+</li>
+<li><a href="https://blog.csdn.net/qq_36613247/article/details/125511260">verilog 归约操作符</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>HDLBits刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>HDLBits-day2</title>
+    <url>/2022/09/30/HDLBits-day2/</url>
+    <content><![CDATA[<h1 id="Bitwise-vs-Logical-Operators"><a href="#Bitwise-vs-Logical-Operators" class="headerlink" title="Bitwise vs. Logical Operators"></a>Bitwise vs. Logical Operators</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Earlier, we mentioned that there are bitwise and logical versions of the various boolean operators (e.g., norgate). When using vectors, the distinction between the two operator types becomes important. A bitwise operation between two N-bit vectors replicates the operation for each bit of the vector and produces a N-bit output, while a logical operation treats the entire vector as a boolean value (true = non-zero, false = zero) and produces a 1-bit output.<br>Look at the simulation waveforms at how the bitwise-OR and logical-OR differ.</p>
+<p><img src="https://img1.imgtp.com/2022/09/29/2R5nLWGa.jpg" alt="1664459730.jpg"></p>
+<span id="more"></span>
+<h2 id="Module-Declaration"><a href="#Module-Declaration" class="headerlink" title="Module Declaration"></a>Module Declaration</h2><pre><code>module top_module( 
+    input [2:0] a,
+    input [2:0] b,
+    output [2:0] out_or_bitwise,
+    output out_or_logical,
+    output [5:0] out_not
+);
+</code></pre><h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><pre><code>module top_module( 
+input [2:0] a,
+input [2:0] b,
+output [2:0] out_or_bitwise,
+output out_or_logical,
+output [5:0] out_not
+);
+    // or_bitwise  按位或
+    assign out_or_bitwise[2] = a[2] | b[2];
+    assign out_or_bitwise[1] = a[1] | b[1];
+    assign out_or_bitwise[0] = a[0] | b[0];
+
+    //out_or_logical  逻辑或
+    assign out_or_logical = a||b;
+
+    // 按位取反
+    assign out_not[5:3] = ~b[2:0];
+    assign out_not[2:0] = ~a[2:0];
+endmodule
+</code></pre><p><img src="https://img1.imgtp.com/2022/09/29/Abj3OxPH.jpg" alt="1664459822.jpg"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">算术运算符</td>
+<td style="text-align:center">+,-,*,/,%</td>
+<td style="text-align:center">加，减，乘，除，取余</td>
+</tr>
+<tr>
+<td style="text-align:center">赋值运算符</td>
+<td style="text-align:center">=,&lt;=</td>
+<td style="text-align:center">阻塞型赋值，非阻塞型赋值</td>
+</tr>
+<tr>
+<td style="text-align:center">关系运算符</td>
+<td style="text-align:center">&gt;,&lt;,==,&gt;=,&lt;=</td>
+<td style="text-align:center">大于，小于，等于，大于等于，小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑运算符</td>
+<td style="text-align:center">&amp;&amp;,\</td>
+<td style="text-align:center">\</td>
+<td>,!</td>
+<td>逻辑与，或，非</td>
+</tr>
+<tr>
+<td style="text-align:center">条件运算符</td>
+<td style="text-align:center">?:</td>
+<td style="text-align:center">条件运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">位运算符</td>
+<td style="text-align:center">~,\</td>
+<td style="text-align:center">,\^,^~</td>
+<td>bitwise非,或，与，归约</td>
+</tr>
+<tr>
+<td style="text-align:center">移位运算符</td>
+<td style="text-align:center">&lt;&lt;,&gt;&gt;</td>
+<td style="text-align:center">左移，右移</td>
+</tr>
+<tr>
+<td style="text-align:center">拼接运算符</td>
+<td style="text-align:center">{ }</td>
+<td style="text-align:center">拼接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>归约与（&amp;）：全部是一。</li>
+<li>归约与非（~&amp;）：有一个零。</li>
+<li>归约或（|）：有一个一。</li>
+<li>归约或非（~|）：全部是零。</li>
+<li>归约异或（^）：一的个数是奇数。</li>
+<li>归约同或（~^）：一的个数是偶数。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>HDLBits刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>HDLBits_day1</title>
+    <url>/2022/09/29/HDLBits-day1/</url>
+    <content><![CDATA[<h1 id="HDLBits刷题"><a href="#HDLBits刷题" class="headerlink" title="HDLBits刷题"></a>HDLBits刷题</h1><h2 id="Exams-x2F-ece241-2013-q12"><a href="#Exams-x2F-ece241-2013-q12" class="headerlink" title="Exams&#x2F;ece241 2013 q12"></a><a href="https://hdlbits.01xz.net/wiki/Exams/ece241_2013_q12">Exams&#x2F;ece241 2013 q12</a></h2><p><strong>Introduction</strong><br>In this question, you will design a circuit for an 8x1 memory, where writing to the memory is accomplished by shifting-in bits, and reading is “random access”, as in a typical RAM. You will then use the circuit to realize a 3-input logic function.</p>
+<p>First, create an 8-bit shift register with 8 D-type flip-flops. Label the flip-flop outputs from Q[0]…Q[7]. The shift register input should be called S, which feeds the input of Q[0] (MSB is shifted in first). The enable input controls whether to shift. Then, extend the circuit to have 3 additional inputs A,B,C and an output Z. The circuit’s behaviour should be as follows: when ABC is 000, Z&#x3D;Q[0], when ABC is 001, Z&#x3D;Q[1], and so on. Your circuit should contain ONLY the 8-bit shift register, and multiplexers. (Aside: this circuit is called a 3-input look-up-table (LUT)).</p>
+<span id="more"></span>
+<p><strong>Module Declaration</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br></pre></td></tr></table></figure>
+<p><strong>Answer</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br><span class="line">reg [7:0] Q;</span><br><span class="line">always@(posedge clk)begin</span><br><span class="line">    if(enable)begin</span><br><span class="line">        Q &lt;= &#123;Q[6:0],S&#125;;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">wire [2:0] sel;</span><br><span class="line">assign sel[2:0] = &#123;A,B,C&#125;;</span><br><span class="line">always @(*) begin  //组合逻辑</span><br><span class="line">    case(sel)</span><br><span class="line">        3&#x27;d0:Z &lt;= Q[0];</span><br><span class="line">        3&#x27;d1:Z &lt;= Q[1];</span><br><span class="line">        3&#x27;d2:Z &lt;= Q[2];</span><br><span class="line">        3&#x27;d3:Z &lt;= Q[3];</span><br><span class="line">        3&#x27;d4:Z &lt;= Q[4];</span><br><span class="line">        3&#x27;d5:Z &lt;= Q[5];</span><br><span class="line">        3&#x27;d6:Z &lt;= Q[6];</span><br><span class="line">        3&#x27;d7:Z &lt;= Q[7];</span><br><span class="line">    endcase</span><br><span class="line">end</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img1.imgtp.com/2022/09/29/xQqv6u1R.jpg" alt="1664454979.jpg"></p>
+]]></content>
+      <categories>
+        <category>HDLBits刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>FPGA的跨时钟信号处理</title>
+    <url>/2022/09/25/FPGA%E7%9A%84%E8%B7%A8%E6%97%B6%E9%92%9F%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<p>待补充…</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Vivado安装后添加芯片和插件的方法</title>
+    <url>/2022/09/23/Vivado%E5%AE%89%E8%A3%85%E5%90%8E%E6%B7%BB%E5%8A%A0%E8%8A%AF%E7%89%87%E5%92%8C%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="Vivado安装后添加芯片和插件的方法"><a href="#Vivado安装后添加芯片和插件的方法" class="headerlink" title="Vivado安装后添加芯片和插件的方法"></a>Vivado安装后添加芯片和插件的方法</h1><h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="1-打开vivado，选择help，点击Add-Design-Tools-or-Devices"><a href="#1-打开vivado，选择help，点击Add-Design-Tools-or-Devices" class="headerlink" title="1. 打开vivado，选择help，点击Add Design Tools or Devices"></a>1. 打开vivado，选择help，点击Add Design Tools or Devices</h3><p><img src="https://img-blog.csdnimg.cn/976b7126ca2a43509d168589215fe431.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="打开vivado"></p>
+<span id="more"></span>
+
+<p>或<br><img src="https://img1.imgtp.com/2022/09/23/6FuOHAIU.png" alt="open_vivado.png"></p>
+<h3 id="2-输入Xilink账号和密码，点击Next"><a href="#2-输入Xilink账号和密码，点击Next" class="headerlink" title="2. 输入Xilink账号和密码，点击Next"></a>2. 输入Xilink账号和密码，点击Next</h3><p><img src="https://img-blog.csdnimg.cn/1209aaa70b6b4dfe815d03d9e3baaaf0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="登录页面"><br>如果没有账号，可以点击<code>please creat one</code> 前往官网注册。</p>
+<h3 id="3-选择想要添加的器件或插件，点击Next"><a href="#3-选择想要添加的器件或插件，点击Next" class="headerlink" title="3. 选择想要添加的器件或插件，点击Next"></a>3. 选择想要添加的器件或插件，点击Next</h3><p><img src="https://img-blog.csdnimg.cn/467092d84bb54262b13a378a6ed6db16.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="安装页面"></p>
+<h3 id="4-点击Install"><a href="#4-点击Install" class="headerlink" title="4. 点击Install"></a>4. 点击Install</h3><p><img src="https://img-blog.csdnimg.cn/68cc81a13a294c12929c9a97d12a6c73.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="确认安装"></p>
+<h3 id="5-等待安装完成"><a href="#5-等待安装完成" class="headerlink" title="5. 等待安装完成"></a>5. 等待安装完成</h3><h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="1-问题一"><a href="#1-问题一" class="headerlink" title="1. 问题一"></a>1. 问题一</h3><p>登陆失败<br><img src="https://img1.imgtp.com/2022/09/23/XrShBWUE.png" alt="登录失败.png"><br>解决办法：前官网更新个人信息，如下所示，更新成功后，即可返回登陆。<br><img src="https://img1.imgtp.com/2022/09/23/CnpgqexA.png" alt="S@J9KDK_8A3_Z0LU3O8B4JP.png"><br><img src="https://img1.imgtp.com/2022/09/23/0X04UCkk.png" alt="更新个人信息.png"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li><a href="https://blog.csdn.net/woaikeji/article/details/122746475#:~:text=1%E3%80%81%E6%89%93%E5%BC%80vivado%EF%BC%8C%E9%80%89%E6%8B%A9help%EF%BC%8C%E7%82%B9%E5%87%BBAdd%20Design%20Tools%20or,Devices%202%20%E3%80%81%E8%BE%93%E5%85%A5Xilink%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E7%82%B9%E5%87%BBNext%203%E3%80%81%E9%80%89%E6%8B%A9%E6%83%B3%E8%A6%81%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%99%A8%E4%BB%B6%E5%9E%8B%E5%8F%B7%EF%BC%8C%E7%82%B9%E5%87%BBNext">Vivado 安装后添加芯片型号方法</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>FPGA</category>
+      </categories>
+      <tags>
+        <tag>vivado的使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2022国庆放假安排</title>
     <url>/2022/09/20/2022%E5%9B%BD%E5%BA%86%E6%94%BE%E5%81%87%E5%AE%89%E6%8E%92/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -20,6 +229,57 @@
       </categories>
       <tags>
         <tag>今日心情</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为树莓派3B+编译OpenWrt固件</title>
+    <url>/2022/09/18/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E7%BC%96%E8%AF%91OpenWrt%E5%9B%BA%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="为树莓派3B-编译OpenWrt固件"><a href="#为树莓派3B-编译OpenWrt固件" class="headerlink" title="为树莓派3B+编译OpenWrt固件"></a>为树莓派3B+编译OpenWrt固件</h1><h2 id="1-源码获取"><a href="#1-源码获取" class="headerlink" title="1. 源码获取"></a>1. 源码获取</h2><h3 id="1-1-获取OpenWrt源代码"><a href="#1-1-获取OpenWrt源代码" class="headerlink" title="1.1 获取OpenWrt源代码"></a>1.1 获取OpenWrt源代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/coolsnowwolf/lede.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-获取插件源代码"><a href="#1-2-获取插件源代码" class="headerlink" title="1.2 获取插件源代码"></a>1.2 获取插件源代码</h3><p><strong>方法一：联网获取</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. sed -i &#x27;$a src-git kenzo https://github.com/kenzok8/openwrt-packages&#x27; feeds.conf.default</span><br><span class="line">2. sed -i &#x27;$a src-git small https://github.com/kenzok8/small&#x27; feeds.conf.default</span><br><span class="line">3. git pull</span><br><span class="line">4. ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p><strong>方法二：离线获取</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 将其他插件下载到 lede/package 文件夹下</span><br><span class="line">    eg. git clone https://github.com/xiaorouji/openwrt-passwall  /package</span><br><span class="line">2. /scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-开始编译"><a href="#2-开始编译" class="headerlink" title="2.开始编译"></a>2.开始编译</h2><h3 id="2-1-在OpenWrt源码目录内输入"><a href="#2-1-在OpenWrt源码目录内输入" class="headerlink" title="2.1 在OpenWrt源码目录内输入"></a>2.1 在OpenWrt源码目录内输入</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. make menuconfig</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-系统选择"><a href="#2-2-系统选择" class="headerlink" title="2.2 系统选择"></a>2.2 系统选择</h3><p>以树莓派3B+ 为例</p>
+<ol>
+<li>Target System (Broadcom BCM27xx)</li>
+<li>Subtarget (BCM2710 boards (64 bit))</li>
+<li>Target Profile (Raspberry Pi 3B&#x2F;3B+&#x2F;3CM (64bit))</li>
+<li>Target Images  —&gt;   #修改kernel和rootfs大小</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>(256) Kernel partition size (in MB)<br>(2048) Root filesystem partition size (in MB)</p>
+</blockquote>
+</blockquote>
+<p>LUCI-&gt; Application 中选择相应插件，插件说明 <a href="https://www.right.com.cn/forum/thread-344825-1-1.html">点击此处</a></p>
+<p><img src="https://img1.imgtp.com/2022/09/21/OdnFQztL.png" alt="1663769116486.png"></p>
+<h3 id="2-3-开始编译"><a href="#2-3-开始编译" class="headerlink" title="2.3 开始编译"></a>2.3 开始编译</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make -j8 download V=s    #下载dll库(国内请尽量全局科学上网)</span><br><span class="line">make -j1 V=s             #编译固件(单线程编译,首次编译尽量选择单线程)</span><br><span class="line">make -j$(($(nproc) + 1)) V=s    #编译固件(多线程)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-编译之后的文件位置"><a href="#2-4-编译之后的文件位置" class="headerlink" title="2.4 编译之后的文件位置"></a>2.4 编译之后的文件位置</h3><p>&#x2F;lede&#x2F;bin&#x2F;targets&#x2F;bcm27xx&#x2F;bcm2710<br>红色框选区域为生成的四个固件，按照文件类型可以分为ext4和sysupgrade。常用的为第一种，即ext4-factory.img。<br><img src="https://img1.imgtp.com/2022/09/18/Of7phCtu.png" alt="1663502029155.png"></p>
+<h2 id="3-可能遇见的问题"><a href="#3-可能遇见的问题" class="headerlink" title="3.可能遇见的问题"></a>3.可能遇见的问题</h2><blockquote>
+<p>问题一：dial tcp 108.177.125.141:443: connect: connection refused<br>解决办法：更换国内的代理地址，如<a href="https://goproxy.cn/">七牛云</a>。</p>
+<p>问题二：尽量不要一次性编译太多插件，不同的插件可能存在兼容问题，容易导致编译过程异常。<br>解决办法：可以通过<code>rm -rf ./tmp &amp;&amp; rm -rf .config</code>来删除配置。</p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://github.com/coolsnowwolf/lede">Lean 的 Openwrt 源码仓库</a></li>
+<li><a href="https://www.bilibili.com/read/cv9714518/">树莓派4B 亲手打造一款Openwrt软路由(带编译固件-超详细) - RaspberryPi硬核系列(三)</a></li>
+<li><a href="https://www.right.com.cn/forum/thread-344825-1-1.html">OpenWrt 编译 LuCI -&gt; Applications 添加插件应用说明-L大</a></li>
+<li><a href="https://github.com/kenzok8/openwrt-packages">openwrt插件</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>爱好</category>
+      </categories>
+      <tags>
+        <tag>OpenWrt</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -66,6 +326,283 @@
       </categories>
       <tags>
         <tag>OpenWrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Object Detection Paper</title>
+    <url>/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/</url>
+    <content><![CDATA[<h1 id="论文名称"><a href="#论文名称" class="headerlink" title="论文名称"></a>论文名称</h1><p><a href="https://arxiv.org/abs/1907.09408">A Survey of Deep Learning-based Object Detection</a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><strong>1. 写作目的</strong></p>
+<blockquote>
+<p>In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.</p>
+</blockquote>
+<p><strong>2. 文章内容</strong></p>
+<blockquote>
+<ol>
+<li>we first analyze the methods of existing typical detection models and describe the benchmark datasets.</li>
+<li>Afterwards and primarily, we provide a comprehensive overview of a variety of object detection methods in a systematic manner, covering the one-stage and two-stage detectors.</li>
+<li>Moreover, we list the traditional and new applications. Some representative branches of object detection are analyzed as well.</li>
+<li>Finally, we discuss the architecture of exploiting these object detection methods to build an effective and efficient system and point out a set of development trends to better follow the state-of-the-art algorithms and further research.</li>
+</ol>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Ⅰ-Introduction"><a href="#Ⅰ-Introduction" class="headerlink" title="Ⅰ.Introduction"></a>Ⅰ.Introduction</h2><h3 id="1-现存的目标检测器分类及其特点"><a href="#1-现存的目标检测器分类及其特点" class="headerlink" title="1. 现存的目标检测器分类及其特点"></a>1. 现存的目标检测器分类及其特点</h3><p><strong>1.1 one-stage：YOLO,SSD.</strong></p>
+<blockquote>
+<p>one-stage detectors achieve high inference speed.</p>
+</blockquote>
+<p><strong>1.2 two-stage：Faster R-CNN.</strong></p>
+<blockquote>
+<p>Two-stage detectors have high localization and object recognition accuracy.</p>
+</blockquote>
+<ol>
+<li>The first stage, called RPN, a Region Proposal Network, proposes candidate object bounding boxes.</li>
+<li>The second stage, features are extracted by RoI Pool(RoI Pooling) operation from each candidate box for the following classification and bounding-box regression tasks .</li>
+</ol>
+<p><strong>1.3两类对比</strong></p>
+<blockquote>
+<ol>
+<li>Fig(a) shows the basic architecture of two-stage detectors.</li>
+<li>Fig(b) exhibits the basic architecture of one-stage detectors.</li>
+</ol>
+</blockquote>
+<p>Furthermore, the one-stage detectors propose predicted boxes from input images directly without region proposal step, thus they are time efficient and can be used for real-time devices.<br><img src="https://img1.imgtp.com/2022/08/29/qlYezasN.png" alt="1661761826298.png"></p>
+<h2 id="Backbone-Networks"><a href="#Backbone-Networks" class="headerlink" title="Backbone Networks"></a>Backbone Networks</h2><p>Backbone network is acting as the basic feature extractor for object detection task which takes images as input and outputs feature maps of the corresponding input image.</p>
+<p>Most of backbone networks for detection are the network for classification task taking out the last fully connected layers.</p>
+<h2 id="Typical-Baselines"><a href="#Typical-Baselines" class="headerlink" title="Typical Baselines"></a>Typical Baselines</h2><ul>
+<li><strong>Two-stage Detectors</strong><ol>
+<li>R-CNN</li>
+<li>Fast R-CNN</li>
+<li>Faster R-CNN</li>
+<li>Mask R-CNN</li>
+</ol>
+</li>
+<li><strong>One-stage Detectors</strong><ol>
+<li>YOLO series</li>
+<li>SSD</li>
+<li>DSSD</li>
+<li>RetinaNet</li>
+<li>M2Det</li>
+<li>RefineDet</li>
+</ol>
+</li>
+<li><strong>Latest Detectors</strong><ol>
+<li>Relation Networks for Object Detection</li>
+<li>DCNv2</li>
+<li>NAS-FPN</li>
+</ol>
+</li>
+</ul>
+<h2 id="Datasets-and-Metrics"><a href="#Datasets-and-Metrics" class="headerlink" title="Datasets and Metrics"></a>Datasets and Metrics</h2><ol>
+<li>PASCAL VOC dataset</li>
+<li>MS COCO benchmark</li>
+<li>ImageNet benchmark</li>
+<li>VisDrone2018 benchmark</li>
+<li>Open Images V5</li>
+<li>Pedestrian detection datasets</li>
+</ol>
+<h2 id="Analysis-of-general-image-object-detection-methods"><a href="#Analysis-of-general-image-object-detection-methods" class="headerlink" title="Analysis of general image object detection methods"></a>Analysis of general image object detection methods</h2><p>Deep neural network based object detection pipelines have four steps in general, image pre-processing, feature extraction, classification and localization, post-processing.</p>
+<ol>
+<li>Firstly, raw images from the dataset cant be fed into the network directly.<br>Therefore, we need to resize them to any special sizes and make them clearer, such as enhancing brightness, color, contrast. Data augmentation is also available to meet some requirements, such as flipping, rotation, scaling, cropping, translation, adding Gaussian noise. In addition, GANs  (generative adversarial networks) can generate new images to enrich the diversity of input according to people’s needs. For more details about data augmentation, please refer to for more details.</li>
+<li>Secondly, feature extraction is a key step for further detection.<br>The feature quality directly determines the upper bound of subsequent tasks like classification and localization.</li>
+<li>Thirdly, the detector head is responsible to propose and refine bounding box concluding classification scores and bounding box coordinates.</li>
+<li>At last, the post-processing step deletes any weak detecting results.<br>For example, NMS is a widely used method in which the highest scoring object deletes its nearby objects with inferior classification scores.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>文献阅读</category>
+      </categories>
+      <tags>
+        <tag>目标检测文献综述</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深度学习-基础知识</title>
+    <url>/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="1-卷积神经网络的基础运算"><a href="#1-卷积神经网络的基础运算" class="headerlink" title="1. 卷积神经网络的基础运算"></a>1. 卷积神经网络的基础运算</h2><h3 id="1-1-对1维数据进行卷积运算的例子"><a href="#1-1-对1维数据进行卷积运算的例子" class="headerlink" title="1.1 对1维数据进行卷积运算的例子"></a>1.1 对1维数据进行卷积运算的例子</h3><p>对于输入数据，卷积运算以一定间隔滑动滤波器(filter)的窗口并应用。将各个位置上滤波器的元素和输入的对应元素相乘，然后再求和。然后，将这个结果保存到输出的对应位置。将这个过程在所有位置都进行一遍，就可以得到卷积运算的输出，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Gd4wmhBA.png" alt="对1维数据进行卷积运算的例子"></p>
+<span id="more"></span>
+
+<h3 id="1-2-卷积加偏置-bias"><a href="#1-2-卷积加偏置-bias" class="headerlink" title="1.2 卷积加偏置(bias)"></a>1.2 卷积加偏置(bias)</h3><p>对输入数据进行卷积操作之后，对所得到的数据加上一个数值，这个数值别成为偏置，偏置通常只有一个。</p>
+<p><img src="https://img1.imgtp.com/2022/08/26/pJN0QVFU.png" alt="卷积加偏置"></p>
+<h3 id="1-3-卷积加填充-padding"><a href="#1-3-卷积加填充-padding" class="headerlink" title="1.3 卷积加填充(padding)"></a>1.3 卷积加填充(padding)</h3><p>在进行卷积层的处理之前，有时要向输入数据的周围填入固定的数据(比如0等)，这称为填充(padding)，是卷积运算中经常会用到的处理。比如，在下图的例子中，对大小为(4, 4)的输入数据应用了幅度为1的填充。“幅度为1的填充”是指用幅度为1像素的0填充周围。<br><img src="https://img1.imgtp.com/2022/08/26/rLCmRF8a.png" alt="卷积加填充"></p>
+<p>通过填充，大小为(4, 4)的输入数据变成了(6, 6)的形状。然后，应用大小为(3, 3)的滤波器，生成了大小为(4, 4)的输出数据。这个例子中将填充设成了1，不过填充的值也可以设置成2、3等任意的整数。<strong>使用填充主要是为了调整输出的大小。</strong> 比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为 1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p>
+<h3 id="1-4-步幅-stride"><a href="#1-4-步幅-stride" class="headerlink" title="1.4 步幅(stride)"></a>1.4 步幅(stride)</h3><p>应用滤波器的位置间隔称为步幅(stride)。之前的例子中步幅都是1，如果将步幅设为2。如下图所示，应用滤波器的窗口的间隔变为2个元素。<br><img src="https://img1.imgtp.com/2022/08/26/HoS7iooZ.png" alt="步幅"></p>
+<h3 id="1-5-参数计算"><a href="#1-5-参数计算" class="headerlink" title="1.5 参数计算"></a>1.5 参数计算</h3><p>设输入大小(H,W),滤波器大小(FH,FW),输出大小(OH,OW),填充(P),步幅(S)。则<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{H+2P-FH}{S}+1\<br>OW&#x3D;\frac{W+2P-FW}{S}+1  \tag{1.1}<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>eg. 输入大小：(28,31)；填充：2；步幅：3；滤波器大小：(5, 5),根据上述计算公式<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{28+2 \times 2-5}{3}+1&#x3D;10\<br>OW&#x3D;\frac{31+2 \times 2-5}{3}+1&#x3D;11 \tag{1.2}<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>如这些例子所示，通过在式（1.1）中代入值，就可以计算输出大小。这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使式（1.1）中的和分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据深度学习的框架的不同，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
+<h3 id="1-6-对3维数据进行卷积运算的例子"><a href="#1-6-对3维数据进行卷积运算的例子" class="headerlink" title="1.6 对3维数据进行卷积运算的例子"></a>1.6 对3维数据进行卷积运算的例子</h3><p>以3通道的数据为例，展示了卷积运算的结果。和2维数据时相比，可以发现纵深方向（通道方向）上特征图增加了。通道方向上有多个特征图时，会按通道进行输入数据和滤波器的卷积运算，并将<strong>结果相加</strong>，从而得到输出。<br><img src="https://img1.imgtp.com/2022/08/26/OmLne8Xu.png" alt="对3维数据进行卷积运算的例子"></p>
+<h3 id="1-7-结合方块思考"><a href="#1-7-结合方块思考" class="headerlink" title="1.7 结合方块思考"></a>1.7 结合方块思考</h3><p>将数据和滤波器结合长方体的方块来考虑，3维数据的卷积运算会很容易理解。方块是如下图所示的3维长方体。把3维数据表示为多维数组时，书写顺序为（channel, height, width）。比如，通道数为C、高度为H、长度为W的数据的形状可以写成（C, H, W）。滤波器也一样，要按（channel, height, width）的顺序书写。比如，通道数为C、滤波器高度为FH（Filter Height）、长度为FW（Filter Width）时，可以写成（C, FH, FW）。<br><img src="https://img1.imgtp.com/2022/08/26/G1rn0T9z.png" alt="结合方块思考卷积运算"><br>在这个例子中，数据输出是1张特征图。所谓1张特征图，换句话说，就是通道数为1的特征图。</p>
+<p>如果要在通道方向上也拥有多个卷积运算就需要用到多个滤波器（权重）。用图表示的话，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/lHJDm0VC.png" alt="基于多个滤波器的卷积运算的例子"><br>如上图所示，通过应用FN个滤波器，输出特征图也生成了FN个。如果将这FN个特征图汇集在一起，就得到了形状为(FN, OH, OW)的方块。将这个方块传给下一层，就是CNN的处理流。关于卷积运算的滤波器，也必须考虑滤波器的数量。因此，作为4维数据，滤波器的权重数据要按(output_channel, input_channel, height, width)的顺序书写。比如，通道数为3、大小为5 × 5的滤波器有20个时，可以写成(20, 3, 5, 5)。</p>
+<p><img src="https://img1.imgtp.com/2022/08/26/DxltFORW.png" alt="卷积运算的处理流（追加了偏置项）"><br>每个通道只有一个偏置。这里，偏置的形状是(FN, 1, 1)，滤波器的输出结果的形状是(FN, OH, OW)。这两个方块相加时，要对滤波器的输出结果(FN, OH, OW)按通道加上相同的偏置值。另外，不同形状的方块相加时，可以基于NumPy的广播功能实现。</p>
+<h3 id="1-8-数据批处理"><a href="#1-8-数据批处理" class="headerlink" title="1.8 数据批处理"></a>1.8 数据批处理</h3><p>下图的批处理版的数据流中，在各个数据的开头添加了批用的维度。像这样，数据作为4维的形状在各层间传递。这里需要注意的是，网络间传递的是4维数据，对这N个数据进行了卷积运算。也就是说，批处理将N次的处理汇总成了1次进行。<br><img src="https://img1.imgtp.com/2022/08/26/jZGv4JkU.png" alt="1661503735483.png"></p>
+<h3 id="1-9-池化-pooling"><a href="#1-9-池化-pooling" class="headerlink" title="1.9 池化(pooling)"></a>1.9 池化(pooling)</h3><p>池化是缩小高、长方向上的空间的运算。比如，如下图所示，进行将2 × 2的区域集约成1个元素的处理，缩小空间大小。除了Max池化之外，还有Average池化等。相对于Max池化是从目标区域中取出最大值，Average池化则是计算目标区域的平均值。在图像识别领域，主要使用Max池化。<br><img src="https://img1.imgtp.com/2022/08/26/7KRz3zjP.png" alt="pooling.png"></p>
+<p><strong>池化层的特征</strong></p>
+<ul>
+<li><strong>没有要学习的参数:</strong> 池化层和卷积层不同，没有要学习的参数。池化只是从目标区域中取最大值（或者平均值），所以不存在要学习的参数。</li>
+<li><strong>通道数不发生变化:</strong> 经过池化运算，输入数据和输出数据的通道数不会发生变化。算是按通道独立进行的。</li>
+<li><strong>对微小的位置变化具有鲁棒性:</strong> 输入数据发生微小偏差时，池化仍会返回相同的结果。因此，池化对输入数据的微小偏差具有鲁棒性,如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Ce8YPLSJ.png" alt="img"></li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://product.dangdang.com/11039869962.html">深度学习入门：基于Python的理论与实现</a></li>
+<li><a href="https://www.cnblogs.com/peaceWang/p/Markdown-tian-jia-Latex-shu-xue-gong-shi.html#toc_0">Markdown添加Latex数学公式添加公式的方法</a></li>
+<li><a href="https://www.latexlive.com/help">LaTeX公式编辑器帮助文档</a></li>
+<li><a href="https://blog.csdn.net/Strive_For_Future/article/details/118609968">Latex公式编号: 多行公式多编号，多行公式单编号</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>testbench</title>
+    <url>/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/</url>
+    <content><![CDATA[<h2 id="1-testbench"><a href="#1-testbench" class="headerlink" title="1. testbench"></a>1. testbench</h2><p>testbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工具。</p>
+<span id="more"></span>
+
+<h2 id="2-testbench组成"><a href="#2-testbench组成" class="headerlink" title="2. testbench组成"></a>2. testbench组成</h2><p><img src="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png" alt=
+"testbench组成结构图"><br>其中testbench最基本的结构包括信号声明、激励和模块例化,复位和时钟产生部分，也可以看做激励。根据设计的复杂度，需要引入时钟和复位部分。当然更为复杂的设计，激励部分也会更加复杂。根据自己的验证需求，选择是否需要自校验和停止仿真部分。</p>
+<h2 id="3-testbench模板"><a href="#3-testbench模板" class="headerlink" title="3.testbench模板"></a>3.testbench模板</h2><pre><code>`timescale 1ns/1ps  //时间精度
+`define    Clock 20 //时钟周期
+
+module u_design_tb;
+//==================&lt;端口&gt;==================================================
+reg                         clk                 ; //时钟，50Mhz
+reg                         rst_n               ; //复位，低电平有效
+reg  [XX:0]                 in                  ; //
+wire [XX:0]                 out                 ; //
+
+//--------------------------------------------------------------------------
+//--    模块例化
+//--------------------------------------------------------------------------
+u_design u_design_inst
+(
+    .clk                    (clk                ),
+    .rst_n                  (rst_n              ),
+    .in                     (in                 ),
+    .out                    (out                )
+);
+
+//----------------------------------------------------------------------
+//--    时钟信号和复位信号
+//----------------------------------------------------------------------
+initial begin
+    clk = 0;
+    forever
+        #(`Clock/2) clk = ~clk;
+end
+
+initial begin
+    rst_n = 0; #(`Clock*20+1);
+    rst_n = 1;
+end
+
+//----------------------------------------------------------------------
+//--    设计输入信号
+//----------------------------------------------------------------------
+initial begin
+    in = 0;
+    #(`Clock*20+2); //初始化完成
+
+    $stop;
+end
+endmodule
+</code></pre>
+<h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度
+module fifo_wr_tb();
+ //==================&lt;端口&gt;==================================================
+reg clk;             
+reg rst_n;
+reg start_write;
+reg start_send;
+wire writing;
+wire sending;
+wire uart_txd;
+//==================&lt;模块例化&gt;==================================================
+fifo_top u_fifo_wr(
+    .sys_clk(clk),
+    .sys_rst_n(rst_n),
+    .key_0(start_write),
+    .key_1(start_send),
+    .led_0(writing),
+    .led_1(sending),
+    .uart_txd(uart_txd)
+);
+
+//==================&lt;模块时钟&gt;==================================================
+initial clk = 1;
+always #10 clk =!clk;
+
+initial begin
+    rst_n = 0;
+    start_write = 1;
+    start_send = 1;
+    #201
+    rst_n = 1;
+ //==================&lt;模块输入信号&gt;==================================================
+    start_write = 0; //开始fifo写入
+    #30_000_000;     //按键延时＋去抖需要20ms以上
+    start_write = 1;
+    #10_000_000;     //等待写入完毕
+    
+    start_send = 0;  //开始串口发送
+    #30_000_000;     //按键延时＋去抖需要20ms以上
+    start_send = 1;
+    #30_000_000;
+    $stop;
+end
+endmodule
+</code></pre>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/37028619">十天学会FPGA之三——testbench的写法</a></li>
+<li><a href="https://www.cnblogs.com/xianyufpga/p/11353455.html">Testbench编写技巧</a></li>
+<li><a href="https://www.runoob.com/w3cnote/verilog-testbench.html">Verilog 仿真激励</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>FPGA</category>
+      </categories>
+      <tags>
+        <tag>Verilog HDL相关知识</tag>
+        <tag>testbench</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>可综合语句及其对应电路结构</title>
+    <url>/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h2 id="1-1-wire和reg"><a href="#1-1-wire和reg" class="headerlink" title="1.1 wire和reg"></a>1.1 wire和reg</h2><p>wire会被综合为一截导线,reg会被综合为一个寄存器.</p>
+<h2 id="1-2-D触发器"><a href="#1-2-D触发器" class="headerlink" title="1.2 D触发器"></a>1.2 D触发器</h2><pre><code>always @(posedge clk) begin 
+    q &lt;= d;
+end
+</code></pre>
+<span id="more"></span>
+
+<h2 id="1-3-多路选择器"><a href="#1-3-多路选择器" class="headerlink" title="1.3 多路选择器"></a>1.3 多路选择器</h2><p>if会被总综合为一个二选一选择器。<br><img src="https://img-blog.csdnimg.cn/2019052010261364.png" alt=
+"二选一选择器" ></p>
+<p>case会被综合成n选一多路器。<br><img src="https://img-blog.csdnimg.cn/20200612092955461.png
+" alt="多路选择器" ></p>
+<p>if语句和组合逻辑下的case语句，他们的条件是<strong>有优先级的</strong>，从上到下优先级递减。<br>优先级：越靠近输出，优先级越高。if else 结构if的优先级最高；多if 结构最后一个if优先级最高。</p>
+<pre><code>always @(posedge clk) begin 
+    if(sel) 
+        q &lt;=a;
+    else
+        q &lt;=b;
+end
+</code></pre>
+<p>未完待续，待补齐Verilog综合之后电路原理图…</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://blog.csdn.net/lianglei665/article/details/114636381">FPGA中常见语法综合后的电路</a></li>
+<li><a href="https://blog.csdn.net/weixin_45912567/article/details/106707795#:~:text=FPGA%20%E4%B8%AD%20%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%20%E7%BB%BC%E5%90%88%20%E5%90%8E%20%E7%9A%84%E7%94%B5%E8%B7%AF%20%E4%B8%8E%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%EF%BC%8CHDL%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%20%E7%94%B5%E8%B7%AF,%E7%9A%84%20%E8%BF%87%E7%A8%8B%E6%97%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%B0%86%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%20%E7%9A%84%20%E6%80%9D%E6%83%B3%E5%B8%A6%E5%85%A5%E5%88%B0HDL%E8%AF%AD%E8%A8%80%E4%B9%A6%E5%86%99%E4%B8%8A%E9%9D%A2%E6%9D%A5%EF%BC%8C%E8%80%8C%E6%98%AF%E9%9C%80%E8%A6%81%E6%97%B6%E5%88%BB%E6%98%8E%E7%99%BD%E8%87%AA%E5%B7%B1%E6%89%80%E5%86%99%20%E7%9A%84%20%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%20%E7%9A%84%20%E7%A1%AC%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82">verilog 中if语句和case语句综合成的电路</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>FPGA</category>
+      </categories>
+      <tags>
+        <tag>Verilog HDL相关知识</tag>
+        <tag>部分可综合语句及其对因电路结构</tag>
       </tags>
   </entry>
   <entry>
@@ -278,25 +815,25 @@
       </tags>
   </entry>
   <entry>
-    <title>Vivado安装后添加芯片和插件的方法</title>
-    <url>/2022/09/23/Vivado%E5%AE%89%E8%A3%85%E5%90%8E%E6%B7%BB%E5%8A%A0%E8%8A%AF%E7%89%87%E5%92%8C%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="Vivado安装后添加芯片和插件的方法"><a href="#Vivado安装后添加芯片和插件的方法" class="headerlink" title="Vivado安装后添加芯片和插件的方法"></a>Vivado安装后添加芯片和插件的方法</h1><h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="1-打开vivado，选择help，点击Add-Design-Tools-or-Devices"><a href="#1-打开vivado，选择help，点击Add-Design-Tools-or-Devices" class="headerlink" title="1. 打开vivado，选择help，点击Add Design Tools or Devices"></a>1. 打开vivado，选择help，点击Add Design Tools or Devices</h3><p><img src="https://img-blog.csdnimg.cn/976b7126ca2a43509d168589215fe431.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="打开vivado"></p>
-<span id="more"></span>
-
-<p>或<br><img src="https://img1.imgtp.com/2022/09/23/6FuOHAIU.png" alt="open_vivado.png"></p>
-<h3 id="2-输入Xilink账号和密码，点击Next"><a href="#2-输入Xilink账号和密码，点击Next" class="headerlink" title="2. 输入Xilink账号和密码，点击Next"></a>2. 输入Xilink账号和密码，点击Next</h3><p><img src="https://img-blog.csdnimg.cn/1209aaa70b6b4dfe815d03d9e3baaaf0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="登录页面"><br>如果没有账号，可以点击<code>please creat one</code> 前往官网注册。</p>
-<h3 id="3-选择想要添加的器件或插件，点击Next"><a href="#3-选择想要添加的器件或插件，点击Next" class="headerlink" title="3. 选择想要添加的器件或插件，点击Next"></a>3. 选择想要添加的器件或插件，点击Next</h3><p><img src="https://img-blog.csdnimg.cn/467092d84bb54262b13a378a6ed6db16.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="安装页面"></p>
-<h3 id="4-点击Install"><a href="#4-点击Install" class="headerlink" title="4. 点击Install"></a>4. 点击Install</h3><p><img src="https://img-blog.csdnimg.cn/68cc81a13a294c12929c9a97d12a6c73.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiT5Lia54On5p2_5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16" alt="确认安装"></p>
-<h3 id="5-等待安装完成"><a href="#5-等待安装完成" class="headerlink" title="5. 等待安装完成"></a>5. 等待安装完成</h3><h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="1-问题一"><a href="#1-问题一" class="headerlink" title="1. 问题一"></a>1. 问题一</h3><p>登陆失败<br><img src="https://img1.imgtp.com/2022/09/23/XrShBWUE.png" alt="登录失败.png"><br>解决办法：前官网更新个人信息，如下所示，更新成功后，即可返回登陆。<br><img src="https://img1.imgtp.com/2022/09/23/CnpgqexA.png" alt="S@J9KDK_8A3_Z0LU3O8B4JP.png"><br><img src="https://img1.imgtp.com/2022/09/23/0X04UCkk.png" alt="更新个人信息.png"></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
-<li><a href="https://blog.csdn.net/woaikeji/article/details/122746475#:~:text=1%E3%80%81%E6%89%93%E5%BC%80vivado%EF%BC%8C%E9%80%89%E6%8B%A9help%EF%BC%8C%E7%82%B9%E5%87%BBAdd%20Design%20Tools%20or,Devices%202%20%E3%80%81%E8%BE%93%E5%85%A5Xilink%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E7%82%B9%E5%87%BBNext%203%E3%80%81%E9%80%89%E6%8B%A9%E6%83%B3%E8%A6%81%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%99%A8%E4%BB%B6%E5%9E%8B%E5%8F%B7%EF%BC%8C%E7%82%B9%E5%87%BBNext">Vivado 安装后添加芯片型号方法</a></li>
-</ol>
-]]></content>
+    <title>胡言乱语</title>
+    <url>/2022/08/11/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="f09ed53cfd6625b8d900bb55aa41a649bb88ed09ef81543762109f2e38667374">9bb17bcae2f8fa7e979d92f6f59d8e1ee566683288321ea74a929da7ed3c4fdb29cd22b6ae6f69374b25e6defe7ac718849ee9ccf524090b0b38845466e1b960be3dda386ef913ea87a208a83de52e4d06eed7445c25cb93da328f076d1d57fe12eec519e8b588d0abe1d5b691c5aa09eea62a56049e58448396d359175dd4cdb405848fde4a0d871e95c353224954c068e5fc3e183ea23424f393f570626c41468050332057262c7b96bb547e2e02e7b9fae27138ab833b29b981919338d01d9efe5e0a7a775e9829a75910e708d74c694240612c658c2e61eabf944aaa92631b3ddea599db8129d63cb3a19ff4e73b4cae00c68dde318ba2036b75bc3bc81e54a81aada88e17a5e26cc047f80ebeb7e994c1b07a7d18071738b73962fb1683d15a95dab5dcdeac2ee24f16eb40731c85d95b70c6dae4cd2495ccde080e239c0ff6ae183a4faad1af521b499d8a81ef7f8067d66ed7bbdfa37b91039daf112246c5d8f909b8f94ae13b60267ce68304df3eddd646f08fc572edc0595b6d01b1544f643c8c16cbf92581da4f58d5f89313d600aa36281a21aabbb0b682bfe7d753cffd34f8611a368ef646b6d5d6b0b070e7e410e73f8c47012bbae11ec8b5a316e0d05e2636a081df511aa2da4e2cab1d242718af838a6266076cc9e8127db7a02c99a8a0fd4aef05de088483ca1a771eeb9f356fbc4e585009afa6e3ddd068ce44efe877a83ef13c182c19ad73858f1e96cb62bd08fb181036ec91695bf04298be15acd31c65401c91f4e0057ea7b15eacffb8feb7b74a88f1eab62d0748222143255efca2f74448611081bc5c42ef6975da9b4c003bf43580cc6e8f69eafbfafa677e7bc268caf3e597f62d53287fa1328153d1770972a9c00717565e81c26d32edb9560728b8d9e561dd7df8a57742541560e1ae50e9992e818d23fb7d089c477069902fcf02eb235ab50015eff76cfd6929c0e74ce7d0beef9daf6fef76c639eeec59c30aba83b8da0a8c007d0908b570e7b31aa58da15fe2277a4733993a7b9ccdbca0354b96ba73cc4c50cc26a85c66bcbd91140187ebea38acc6fefb9eb5a47f86db2c2257a975f90148967050196f37e54500e21b33f8ad60efe649a806741aff8a5eddab95e9c247d261fc4bb848427b6b5c6cd1b1330dc1067d5b3a74e300b87da16f98a4d43029c7d68dddc6489843a73b0e3712e811baea745bc1d6b90a42add33bf56784cdbc6bdbdd820d7cf09977401738f5d99edc007028b5a49362b01060bfe3e212c9de25c272b6be58b5b3d12a754cbd2823eeb013ce98873ee11afe78e9c7964d5062ae26227fdf2e05d1921e0224e6fdee7cccaa31c2bbf882f317cabd7d49349d5149594e21ec157cc269603817158c3e6adb92ce0068f94fdf6e0ca79d46ea882b41caee3cd6ea71b5f99d82fae868fc8b5a1c66f881ff6e21c5046ebf4f3f0964ffb1bb134adef8093ace5938a13204ee9039592d65f54ecd4e727f5a545ceca5bc738c7169ca2d30c6977256cb8b14008c1112eecaf635a508b36a990340bf1570936914de08042af0f449d3275fc1644718422da3f97fc17a4ab23a2645337ebd9f4734900268382335aad6923649291202661f25a97f9f615b47615f0579f29610b4fefd180b3a8b2ad5e2ea105cfc2c2755d9cee22ad1147e3c7353379a37d2fdfea62807ac87f8248e1618e05180a852dc9d57f571a7309d12f5a1942704d311a23168abc11bfa5bac0aa4cbdfebf3b5a64758c47fc3e7129a5ac7c33a6c07746301ee83634471e4bb2c07f1a2984648449ec604e5f1f8f612bd6fd2f14129bbc359ab21edf3b50b971f921463c7caae21c898539c4e7e5d5718d9649764977feb8129dbf79690dcb2069228d79857f009c2d3346f431fe66a54cd370f71a40582d37c77b92d94527a6cf1340e508b62c70d1a1434aa7013f8ee35f98bfa0205f018f203565cbaaea8195f8f0f19f2e97ceef468e37535abdb95c36d41d36897f70bc0c37ed575bb681a49dc05c57adb7b3e19a1051e06a6fa84739ec1b00bfe60cf58c102a2459317059894559cf55e957b4b36f36d1f76898b32d77a7cbd8d613b621fe0cfde1eb8833420ec7dc332dd73d3c22644a386c6b19f42b79383f4b859d138a0804198ba50b8e9d3f2f293e9</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>FPGA</category>
+        <category>生活</category>
       </categories>
       <tags>
-        <tag>vivado的使用</tag>
+        <tag>今日心情</tag>
       </tags>
   </entry>
   <entry>
@@ -443,387 +980,5 @@
         <tag>hello world</tag>
         <tag>tags test</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>testbench</title>
-    <url>/2022/08/24/testbench%E7%9A%84%E4%B9%A6%E5%86%99/</url>
-    <content><![CDATA[<h2 id="1-testbench"><a href="#1-testbench" class="headerlink" title="1. testbench"></a>1. testbench</h2><p>testbench是一种验证的手段。testbench就是对写的FPGA模块设计文件进行测试的文件。verilog和VHDL的国际标准里面有很多不能被综合实现的语句，比如initial，forever，repeat和延时语句等。但这些语句可以在模块仿真的时候使用。testbench的运行环境一般是ise或者vivado自带的仿真工具，或者如modelsim一样的第三方仿真工具。</p>
-<span id="more"></span>
-
-<h2 id="2-testbench组成"><a href="#2-testbench组成" class="headerlink" title="2. testbench组成"></a>2. testbench组成</h2><p><img src="https://www.runoob.com/wp-content/uploads/2020/09/VuJtsmlLrJjDTWDO.png" alt=
-"testbench组成结构图"><br>其中testbench最基本的结构包括信号声明、激励和模块例化,复位和时钟产生部分，也可以看做激励。根据设计的复杂度，需要引入时钟和复位部分。当然更为复杂的设计，激励部分也会更加复杂。根据自己的验证需求，选择是否需要自校验和停止仿真部分。</p>
-<h2 id="3-testbench模板"><a href="#3-testbench模板" class="headerlink" title="3.testbench模板"></a>3.testbench模板</h2><pre><code>`timescale 1ns/1ps  //时间精度
-`define    Clock 20 //时钟周期
-
-module u_design_tb;
-//==================&lt;端口&gt;==================================================
-reg                         clk                 ; //时钟，50Mhz
-reg                         rst_n               ; //复位，低电平有效
-reg  [XX:0]                 in                  ; //
-wire [XX:0]                 out                 ; //
-
-//--------------------------------------------------------------------------
-//--    模块例化
-//--------------------------------------------------------------------------
-u_design u_design_inst
-(
-    .clk                    (clk                ),
-    .rst_n                  (rst_n              ),
-    .in                     (in                 ),
-    .out                    (out                )
-);
-
-//----------------------------------------------------------------------
-//--    时钟信号和复位信号
-//----------------------------------------------------------------------
-initial begin
-    clk = 0;
-    forever
-        #(`Clock/2) clk = ~clk;
-end
-
-initial begin
-    rst_n = 0; #(`Clock*20+1);
-    rst_n = 1;
-end
-
-//----------------------------------------------------------------------
-//--    设计输入信号
-//----------------------------------------------------------------------
-initial begin
-    in = 0;
-    #(`Clock*20+2); //初始化完成
-
-    $stop;
-end
-endmodule
-</code></pre>
-<h2 id="4-testbench测试"><a href="#4-testbench测试" class="headerlink" title="4. testbench测试"></a>4. testbench测试</h2><pre><code>`timescale 1ns / 1ps  //时间精度
-module fifo_wr_tb();
- //==================&lt;端口&gt;==================================================
-reg clk;             
-reg rst_n;
-reg start_write;
-reg start_send;
-wire writing;
-wire sending;
-wire uart_txd;
-//==================&lt;模块例化&gt;==================================================
-fifo_top u_fifo_wr(
-    .sys_clk(clk),
-    .sys_rst_n(rst_n),
-    .key_0(start_write),
-    .key_1(start_send),
-    .led_0(writing),
-    .led_1(sending),
-    .uart_txd(uart_txd)
-);
-
-//==================&lt;模块时钟&gt;==================================================
-initial clk = 1;
-always #10 clk =!clk;
-
-initial begin
-    rst_n = 0;
-    start_write = 1;
-    start_send = 1;
-    #201
-    rst_n = 1;
- //==================&lt;模块输入信号&gt;==================================================
-    start_write = 0; //开始fifo写入
-    #30_000_000;     //按键延时＋去抖需要20ms以上
-    start_write = 1;
-    #10_000_000;     //等待写入完毕
-    
-    start_send = 0;  //开始串口发送
-    #30_000_000;     //按键延时＋去抖需要20ms以上
-    start_send = 1;
-    #30_000_000;
-    $stop;
-end
-endmodule
-</code></pre>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/37028619">十天学会FPGA之三——testbench的写法</a></li>
-<li><a href="https://www.cnblogs.com/xianyufpga/p/11353455.html">Testbench编写技巧</a></li>
-<li><a href="https://www.runoob.com/w3cnote/verilog-testbench.html">Verilog 仿真激励</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>FPGA</category>
-      </categories>
-      <tags>
-        <tag>Verilog HDL相关知识</tag>
-        <tag>testbench</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为树莓派3B+编译OpenWrt固件</title>
-    <url>/2022/09/18/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E7%BC%96%E8%AF%91OpenWrt%E5%9B%BA%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="为树莓派3B-编译OpenWrt固件"><a href="#为树莓派3B-编译OpenWrt固件" class="headerlink" title="为树莓派3B+编译OpenWrt固件"></a>为树莓派3B+编译OpenWrt固件</h1><h2 id="1-源码获取"><a href="#1-源码获取" class="headerlink" title="1. 源码获取"></a>1. 源码获取</h2><h3 id="1-1-获取OpenWrt源代码"><a href="#1-1-获取OpenWrt源代码" class="headerlink" title="1.1 获取OpenWrt源代码"></a>1.1 获取OpenWrt源代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/coolsnowwolf/lede.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-获取插件源代码"><a href="#1-2-获取插件源代码" class="headerlink" title="1.2 获取插件源代码"></a>1.2 获取插件源代码</h3><p><strong>方法一：联网获取</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. sed -i &#x27;$a src-git kenzo https://github.com/kenzok8/openwrt-packages&#x27; feeds.conf.default</span><br><span class="line">2. sed -i &#x27;$a src-git small https://github.com/kenzok8/small&#x27; feeds.conf.default</span><br><span class="line">3. git pull</span><br><span class="line">4. ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p><strong>方法二：离线获取</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 将其他插件下载到 lede/package 文件夹下</span><br><span class="line">    eg. git clone https://github.com/xiaorouji/openwrt-passwall  /package</span><br><span class="line">2. /scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-开始编译"><a href="#2-开始编译" class="headerlink" title="2.开始编译"></a>2.开始编译</h2><h3 id="2-1-在OpenWrt源码目录内输入"><a href="#2-1-在OpenWrt源码目录内输入" class="headerlink" title="2.1 在OpenWrt源码目录内输入"></a>2.1 在OpenWrt源码目录内输入</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. make menuconfig</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-系统选择"><a href="#2-2-系统选择" class="headerlink" title="2.2 系统选择"></a>2.2 系统选择</h3><p>以树莓派3B+ 为例</p>
-<ol>
-<li>Target System (Broadcom BCM27xx)</li>
-<li>Subtarget (BCM2710 boards (64 bit))</li>
-<li>Target Profile (Raspberry Pi 3B&#x2F;3B+&#x2F;3CM (64bit))</li>
-<li>Target Images  —&gt;   #修改kernel和rootfs大小</li>
-</ol>
-<blockquote>
-<blockquote>
-<p>(256) Kernel partition size (in MB)<br>(2048) Root filesystem partition size (in MB)</p>
-</blockquote>
-</blockquote>
-<p>LUCI-&gt; Application 中选择相应插件，插件说明 <a href="https://www.right.com.cn/forum/thread-344825-1-1.html">点击此处</a></p>
-<p><img src="https://img1.imgtp.com/2022/09/21/OdnFQztL.png" alt="1663769116486.png"></p>
-<h3 id="2-3-开始编译"><a href="#2-3-开始编译" class="headerlink" title="2.3 开始编译"></a>2.3 开始编译</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make -j8 download V=s    #下载dll库(国内请尽量全局科学上网)</span><br><span class="line">make -j1 V=s             #编译固件(单线程编译,首次编译尽量选择单线程)</span><br><span class="line">make -j$(($(nproc) + 1)) V=s    #编译固件(多线程)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-4-编译之后的文件位置"><a href="#2-4-编译之后的文件位置" class="headerlink" title="2.4 编译之后的文件位置"></a>2.4 编译之后的文件位置</h3><p>&#x2F;lede&#x2F;bin&#x2F;targets&#x2F;bcm27xx&#x2F;bcm2710<br>红色框选区域为生成的四个固件，按照文件类型可以分为ext4和sysupgrade。常用的为第一种，即ext4-factory.img。<br><img src="https://img1.imgtp.com/2022/09/18/Of7phCtu.png" alt="1663502029155.png"></p>
-<h2 id="3-可能遇见的问题"><a href="#3-可能遇见的问题" class="headerlink" title="3.可能遇见的问题"></a>3.可能遇见的问题</h2><blockquote>
-<p>问题一：dial tcp 108.177.125.141:443: connect: connection refused<br>解决办法：更换国内的代理地址，如<a href="https://goproxy.cn/">七牛云</a>。</p>
-<p>问题二：尽量不要一次性编译太多插件，不同的插件可能存在兼容问题，容易导致编译过程异常。<br>解决办法：可以通过<code>rm -rf ./tmp &amp;&amp; rm -rf .config</code>来删除配置。</p>
-</blockquote>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://github.com/coolsnowwolf/lede">Lean 的 Openwrt 源码仓库</a></li>
-<li><a href="https://www.bilibili.com/read/cv9714518/">树莓派4B 亲手打造一款Openwrt软路由(带编译固件-超详细) - RaspberryPi硬核系列(三)</a></li>
-<li><a href="https://www.right.com.cn/forum/thread-344825-1-1.html">OpenWrt 编译 LuCI -&gt; Applications 添加插件应用说明-L大</a></li>
-<li><a href="https://github.com/kenzok8/openwrt-packages">openwrt插件</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>爱好</category>
-      </categories>
-      <tags>
-        <tag>OpenWrt</tag>
-        <tag>树莓派</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>可综合语句及其对应电路结构</title>
-    <url>/2022/08/23/%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h2 id="1-1-wire和reg"><a href="#1-1-wire和reg" class="headerlink" title="1.1 wire和reg"></a>1.1 wire和reg</h2><p>wire会被综合为一截导线,reg会被综合为一个寄存器.</p>
-<h2 id="1-2-D触发器"><a href="#1-2-D触发器" class="headerlink" title="1.2 D触发器"></a>1.2 D触发器</h2><pre><code>always @(posedge clk) begin 
-    q &lt;= d;
-end
-</code></pre>
-<span id="more"></span>
-
-<h2 id="1-3-多路选择器"><a href="#1-3-多路选择器" class="headerlink" title="1.3 多路选择器"></a>1.3 多路选择器</h2><p>if会被总综合为一个二选一选择器。<br><img src="https://img-blog.csdnimg.cn/2019052010261364.png" alt=
-"二选一选择器" ></p>
-<p>case会被综合成n选一多路器。<br><img src="https://img-blog.csdnimg.cn/20200612092955461.png
-" alt="多路选择器" ></p>
-<p>if语句和组合逻辑下的case语句，他们的条件是<strong>有优先级的</strong>，从上到下优先级递减。<br>优先级：越靠近输出，优先级越高。if else 结构if的优先级最高；多if 结构最后一个if优先级最高。</p>
-<pre><code>always @(posedge clk) begin 
-    if(sel) 
-        q &lt;=a;
-    else
-        q &lt;=b;
-end
-</code></pre>
-<p>未完待续，待补齐Verilog综合之后电路原理图…</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="https://blog.csdn.net/lianglei665/article/details/114636381">FPGA中常见语法综合后的电路</a></li>
-<li><a href="https://blog.csdn.net/weixin_45912567/article/details/106707795#:~:text=FPGA%20%E4%B8%AD%20%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%20%E7%BB%BC%E5%90%88%20%E5%90%8E%20%E7%9A%84%E7%94%B5%E8%B7%AF%20%E4%B8%8E%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%EF%BC%8CHDL%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%20%E7%94%B5%E8%B7%AF,%E7%9A%84%20%E8%BF%87%E7%A8%8B%E6%97%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%B0%86%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%20%E7%9A%84%20%E6%80%9D%E6%83%B3%E5%B8%A6%E5%85%A5%E5%88%B0HDL%E8%AF%AD%E8%A8%80%E4%B9%A6%E5%86%99%E4%B8%8A%E9%9D%A2%E6%9D%A5%EF%BC%8C%E8%80%8C%E6%98%AF%E9%9C%80%E8%A6%81%E6%97%B6%E5%88%BB%E6%98%8E%E7%99%BD%E8%87%AA%E5%B7%B1%E6%89%80%E5%86%99%20%E7%9A%84%20%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%20%E7%9A%84%20%E7%A1%AC%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82">verilog 中if语句和case语句综合成的电路</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>FPGA</category>
-      </categories>
-      <tags>
-        <tag>Verilog HDL相关知识</tag>
-        <tag>部分可综合语句及其对因电路结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>about me</title>
-    <url>/2022/09/11/%E7%BD%AE%E9%A1%B6%E6%AC%A2%E8%BF%8E%E9%A1%B5/</url>
-    <content><![CDATA[<p>你好，欢迎来到我的博客。<br>关于我：24岁，属虎，目前在西南某一所不知名双非院校攻读研究生学位，有一位挚爱的女友。平常我会在这里记录自己生活中的日常琐事和一些学习到的知识。如果对我分享的内容有所疑问或者有什么需要我帮助的地方，你可以通过邮件与我取得联系，邮件地址是<strong><a href="mailto:&#116;&#x68;&#101;&#x62;&#101;&#x73;&#116;&#122;&#104;&#x69;&#104;&#x61;&#111;&#64;&#102;&#x6f;&#120;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#116;&#x68;&#101;&#x62;&#101;&#x73;&#116;&#122;&#104;&#x69;&#104;&#x61;&#111;&#64;&#102;&#x6f;&#120;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></strong> 。</p>
-]]></content>
-      <tags>
-        <tag>about me</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>胡言乱语</title>
-    <url>/2022/08/11/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="f09ed53cfd6625b8d900bb55aa41a649bb88ed09ef81543762109f2e38667374">9bb17bcae2f8fa7e979d92f6f59d8e1ee566683288321ea74a929da7ed3c4fdb29cd22b6ae6f69374b25e6defe7ac718849ee9ccf524090b0b38845466e1b960be3dda386ef913ea87a208a83de52e4d06eed7445c25cb93da328f076d1d57fe12eec519e8b588d0abe1d5b691c5aa09eea62a56049e58448396d359175dd4cdb405848fde4a0d871e95c353224954c068e5fc3e183ea23424f393f570626c41468050332057262c7b96bb547e2e02e7b9fae27138ab833b29b981919338d01d9efe5e0a7a775e9829a75910e708d74c694240612c658c2e61eabf944aaa92631b3ddea599db8129d63cb3a19ff4e73b4cae00c68dde318ba2036b75bc3bc81e54a81aada88e17a5e26cc047f80ebeb7e994c1b07a7d18071738b73962fb1683d15a95dab5dcdeac2ee24f16eb40731c85d95b70c6dae4cd2495ccde080e239c0ff6ae183a4faad1af521b499d8a81ef7f8067d66ed7bbdfa37b91039daf112246c5d8f909b8f94ae13b60267ce68304df3eddd646f08fc572edc0595b6d01b1544f643c8c16cbf92581da4f58d5f89313d600aa36281a21aabbb0b682bfe7d753cffd34f8611a368ef646b6d5d6b0b070e7e410e73f8c47012bbae11ec8b5a316e0d05e2636a081df511aa2da4e2cab1d242718af838a6266076cc9e8127db7a02c99a8a0fd4aef05de088483ca1a771eeb9f356fbc4e585009afa6e3ddd068ce44efe877a83ef13c182c19ad73858f1e96cb62bd08fb181036ec91695bf04298be15acd31c65401c91f4e0057ea7b15eacffb8feb7b74a88f1eab62d0748222143255efca2f74448611081bc5c42ef6975da9b4c003bf43580cc6e8f69eafbfafa677e7bc268caf3e597f62d53287fa1328153d1770972a9c00717565e81c26d32edb9560728b8d9e561dd7df8a57742541560e1ae50e9992e818d23fb7d089c477069902fcf02eb235ab50015eff76cfd6929c0e74ce7d0beef9daf6fef76c639eeec59c30aba83b8da0a8c007d0908b570e7b31aa58da15fe2277a4733993a7b9ccdbca0354b96ba73cc4c50cc26a85c66bcbd91140187ebea38acc6fefb9eb5a47f86db2c2257a975f90148967050196f37e54500e21b33f8ad60efe649a806741aff8a5eddab95e9c247d261fc4bb848427b6b5c6cd1b1330dc1067d5b3a74e300b87da16f98a4d43029c7d68dddc6489843a73b0e3712e811baea745bc1d6b90a42add33bf56784cdbc6bdbdd820d7cf09977401738f5d99edc007028b5a49362b01060bfe3e212c9de25c272b6be58b5b3d12a754cbd2823eeb013ce98873ee11afe78e9c7964d5062ae26227fdf2e05d1921e0224e6fdee7cccaa31c2bbf882f317cabd7d49349d5149594e21ec157cc269603817158c3e6adb92ce0068f94fdf6e0ca79d46ea882b41caee3cd6ea71b5f99d82fae868fc8b5a1c66f881ff6e21c5046ebf4f3f0964ffb1bb134adef8093ace5938a13204ee9039592d65f54ecd4e727f5a545ceca5bc738c7169ca2d30c6977256cb8b14008c1112eecaf635a508b36a990340bf1570936914de08042af0f449d3275fc1644718422da3f97fc17a4ab23a2645337ebd9f4734900268382335aad6923649291202661f25a97f9f615b47615f0579f29610b4fefd180b3a8b2ad5e2ea105cfc2c2755d9cee22ad1147e3c7353379a37d2fdfea62807ac87f8248e1618e05180a852dc9d57f571a7309d12f5a1942704d311a23168abc11bfa5bac0aa4cbdfebf3b5a64758c47fc3e7129a5ac7c33a6c07746301ee83634471e4bb2c07f1a2984648449ec604e5f1f8f612bd6fd2f14129bbc359ab21edf3b50b971f921463c7caae21c898539c4e7e5d5718d9649764977feb8129dbf79690dcb2069228d79857f009c2d3346f431fe66a54cd370f71a40582d37c77b92d94527a6cf1340e508b62c70d1a1434aa7013f8ee35f98bfa0205f018f203565cbaaea8195f8f0f19f2e97ceef468e37535abdb95c36d41d36897f70bc0c37ed575bb681a49dc05c57adb7b3e19a1051e06a6fa84739ec1b00bfe60cf58c102a2459317059894559cf55e957b4b36f36d1f76898b32d77a7cbd8d613b621fe0cfde1eb8833420ec7dc332dd73d3c22644a386c6b19f42b79383f4b859d138a0804198ba50b8e9d3f2f293e9</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>今日心情</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深度学习-基础知识</title>
-    <url>/2022/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h2 id="1-卷积神经网络的基础运算"><a href="#1-卷积神经网络的基础运算" class="headerlink" title="1. 卷积神经网络的基础运算"></a>1. 卷积神经网络的基础运算</h2><h3 id="1-1-对1维数据进行卷积运算的例子"><a href="#1-1-对1维数据进行卷积运算的例子" class="headerlink" title="1.1 对1维数据进行卷积运算的例子"></a>1.1 对1维数据进行卷积运算的例子</h3><p>对于输入数据，卷积运算以一定间隔滑动滤波器(filter)的窗口并应用。将各个位置上滤波器的元素和输入的对应元素相乘，然后再求和。然后，将这个结果保存到输出的对应位置。将这个过程在所有位置都进行一遍，就可以得到卷积运算的输出，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Gd4wmhBA.png" alt="对1维数据进行卷积运算的例子"></p>
-<span id="more"></span>
-
-<h3 id="1-2-卷积加偏置-bias"><a href="#1-2-卷积加偏置-bias" class="headerlink" title="1.2 卷积加偏置(bias)"></a>1.2 卷积加偏置(bias)</h3><p>对输入数据进行卷积操作之后，对所得到的数据加上一个数值，这个数值别成为偏置，偏置通常只有一个。</p>
-<p><img src="https://img1.imgtp.com/2022/08/26/pJN0QVFU.png" alt="卷积加偏置"></p>
-<h3 id="1-3-卷积加填充-padding"><a href="#1-3-卷积加填充-padding" class="headerlink" title="1.3 卷积加填充(padding)"></a>1.3 卷积加填充(padding)</h3><p>在进行卷积层的处理之前，有时要向输入数据的周围填入固定的数据(比如0等)，这称为填充(padding)，是卷积运算中经常会用到的处理。比如，在下图的例子中，对大小为(4, 4)的输入数据应用了幅度为1的填充。“幅度为1的填充”是指用幅度为1像素的0填充周围。<br><img src="https://img1.imgtp.com/2022/08/26/rLCmRF8a.png" alt="卷积加填充"></p>
-<p>通过填充，大小为(4, 4)的输入数据变成了(6, 6)的形状。然后，应用大小为(3, 3)的滤波器，生成了大小为(4, 4)的输出数据。这个例子中将填充设成了1，不过填充的值也可以设置成2、3等任意的整数。<strong>使用填充主要是为了调整输出的大小。</strong> 比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为 1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p>
-<h3 id="1-4-步幅-stride"><a href="#1-4-步幅-stride" class="headerlink" title="1.4 步幅(stride)"></a>1.4 步幅(stride)</h3><p>应用滤波器的位置间隔称为步幅(stride)。之前的例子中步幅都是1，如果将步幅设为2。如下图所示，应用滤波器的窗口的间隔变为2个元素。<br><img src="https://img1.imgtp.com/2022/08/26/HoS7iooZ.png" alt="步幅"></p>
-<h3 id="1-5-参数计算"><a href="#1-5-参数计算" class="headerlink" title="1.5 参数计算"></a>1.5 参数计算</h3><p>设输入大小(H,W),滤波器大小(FH,FW),输出大小(OH,OW),填充(P),步幅(S)。则<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{H+2P-FH}{S}+1\<br>OW&#x3D;\frac{W+2P-FW}{S}+1  \tag{1.1}<br>\end{cases}<br>\end{equation}<br>$$</p>
-<p>eg. 输入大小：(28,31)；填充：2；步幅：3；滤波器大小：(5, 5),根据上述计算公式<br>$$<br>\begin{equation}<br>\begin{cases}<br>OH&#x3D;\frac{28+2 \times 2-5}{3}+1&#x3D;10\<br>OW&#x3D;\frac{31+2 \times 2-5}{3}+1&#x3D;11 \tag{1.2}<br>\end{cases}<br>\end{equation}<br>$$</p>
-<p>如这些例子所示，通过在式（1.1）中代入值，就可以计算输出大小。这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使式（1.1）中的和分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据深度学习的框架的不同，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
-<h3 id="1-6-对3维数据进行卷积运算的例子"><a href="#1-6-对3维数据进行卷积运算的例子" class="headerlink" title="1.6 对3维数据进行卷积运算的例子"></a>1.6 对3维数据进行卷积运算的例子</h3><p>以3通道的数据为例，展示了卷积运算的结果。和2维数据时相比，可以发现纵深方向（通道方向）上特征图增加了。通道方向上有多个特征图时，会按通道进行输入数据和滤波器的卷积运算，并将<strong>结果相加</strong>，从而得到输出。<br><img src="https://img1.imgtp.com/2022/08/26/OmLne8Xu.png" alt="对3维数据进行卷积运算的例子"></p>
-<h3 id="1-7-结合方块思考"><a href="#1-7-结合方块思考" class="headerlink" title="1.7 结合方块思考"></a>1.7 结合方块思考</h3><p>将数据和滤波器结合长方体的方块来考虑，3维数据的卷积运算会很容易理解。方块是如下图所示的3维长方体。把3维数据表示为多维数组时，书写顺序为（channel, height, width）。比如，通道数为C、高度为H、长度为W的数据的形状可以写成（C, H, W）。滤波器也一样，要按（channel, height, width）的顺序书写。比如，通道数为C、滤波器高度为FH（Filter Height）、长度为FW（Filter Width）时，可以写成（C, FH, FW）。<br><img src="https://img1.imgtp.com/2022/08/26/G1rn0T9z.png" alt="结合方块思考卷积运算"><br>在这个例子中，数据输出是1张特征图。所谓1张特征图，换句话说，就是通道数为1的特征图。</p>
-<p>如果要在通道方向上也拥有多个卷积运算就需要用到多个滤波器（权重）。用图表示的话，如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/lHJDm0VC.png" alt="基于多个滤波器的卷积运算的例子"><br>如上图所示，通过应用FN个滤波器，输出特征图也生成了FN个。如果将这FN个特征图汇集在一起，就得到了形状为(FN, OH, OW)的方块。将这个方块传给下一层，就是CNN的处理流。关于卷积运算的滤波器，也必须考虑滤波器的数量。因此，作为4维数据，滤波器的权重数据要按(output_channel, input_channel, height, width)的顺序书写。比如，通道数为3、大小为5 × 5的滤波器有20个时，可以写成(20, 3, 5, 5)。</p>
-<p><img src="https://img1.imgtp.com/2022/08/26/DxltFORW.png" alt="卷积运算的处理流（追加了偏置项）"><br>每个通道只有一个偏置。这里，偏置的形状是(FN, 1, 1)，滤波器的输出结果的形状是(FN, OH, OW)。这两个方块相加时，要对滤波器的输出结果(FN, OH, OW)按通道加上相同的偏置值。另外，不同形状的方块相加时，可以基于NumPy的广播功能实现。</p>
-<h3 id="1-8-数据批处理"><a href="#1-8-数据批处理" class="headerlink" title="1.8 数据批处理"></a>1.8 数据批处理</h3><p>下图的批处理版的数据流中，在各个数据的开头添加了批用的维度。像这样，数据作为4维的形状在各层间传递。这里需要注意的是，网络间传递的是4维数据，对这N个数据进行了卷积运算。也就是说，批处理将N次的处理汇总成了1次进行。<br><img src="https://img1.imgtp.com/2022/08/26/jZGv4JkU.png" alt="1661503735483.png"></p>
-<h3 id="1-9-池化-pooling"><a href="#1-9-池化-pooling" class="headerlink" title="1.9 池化(pooling)"></a>1.9 池化(pooling)</h3><p>池化是缩小高、长方向上的空间的运算。比如，如下图所示，进行将2 × 2的区域集约成1个元素的处理，缩小空间大小。除了Max池化之外，还有Average池化等。相对于Max池化是从目标区域中取出最大值，Average池化则是计算目标区域的平均值。在图像识别领域，主要使用Max池化。<br><img src="https://img1.imgtp.com/2022/08/26/7KRz3zjP.png" alt="pooling.png"></p>
-<p><strong>池化层的特征</strong></p>
-<ul>
-<li><strong>没有要学习的参数:</strong> 池化层和卷积层不同，没有要学习的参数。池化只是从目标区域中取最大值（或者平均值），所以不存在要学习的参数。</li>
-<li><strong>通道数不发生变化:</strong> 经过池化运算，输入数据和输出数据的通道数不会发生变化。算是按通道独立进行的。</li>
-<li><strong>对微小的位置变化具有鲁棒性:</strong> 输入数据发生微小偏差时，池化仍会返回相同的结果。因此，池化对输入数据的微小偏差具有鲁棒性,如下图所示。<br><img src="https://img1.imgtp.com/2022/08/26/Ce8YPLSJ.png" alt="img"></li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="https://product.dangdang.com/11039869962.html">深度学习入门：基于Python的理论与实现</a></li>
-<li><a href="https://www.cnblogs.com/peaceWang/p/Markdown-tian-jia-Latex-shu-xue-gong-shi.html#toc_0">Markdown添加Latex数学公式添加公式的方法</a></li>
-<li><a href="https://www.latexlive.com/help">LaTeX公式编辑器帮助文档</a></li>
-<li><a href="https://blog.csdn.net/Strive_For_Future/article/details/118609968">Latex公式编号: 多行公式多编号，多行公式单编号</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Object Detection Paper</title>
-    <url>/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/</url>
-    <content><![CDATA[<h1 id="论文名称"><a href="#论文名称" class="headerlink" title="论文名称"></a>论文名称</h1><p><a href="https://arxiv.org/abs/1907.09408">A Survey of Deep Learning-based Object Detection</a></p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><strong>1. 写作目的</strong></p>
-<blockquote>
-<p>In order tounderstand the main development status of object detection pipeline, thoroughly and deeply.</p>
-</blockquote>
-<p><strong>2. 文章内容</strong></p>
-<blockquote>
-<ol>
-<li>we first analyze the methods of existing typical detection models and describe the benchmark datasets.</li>
-<li>Afterwards and primarily, we provide a comprehensive overview of a variety of object detection methods in a systematic manner, covering the one-stage and two-stage detectors.</li>
-<li>Moreover, we list the traditional and new applications. Some representative branches of object detection are analyzed as well.</li>
-<li>Finally, we discuss the architecture of exploiting these object detection methods to build an effective and efficient system and point out a set of development trends to better follow the state-of-the-art algorithms and further research.</li>
-</ol>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="Ⅰ-Introduction"><a href="#Ⅰ-Introduction" class="headerlink" title="Ⅰ.Introduction"></a>Ⅰ.Introduction</h2><h3 id="1-现存的目标检测器分类及其特点"><a href="#1-现存的目标检测器分类及其特点" class="headerlink" title="1. 现存的目标检测器分类及其特点"></a>1. 现存的目标检测器分类及其特点</h3><p><strong>1.1 one-stage：YOLO,SSD.</strong></p>
-<blockquote>
-<p>one-stage detectors achieve high inference speed.</p>
-</blockquote>
-<p><strong>1.2 two-stage：Faster R-CNN.</strong></p>
-<blockquote>
-<p>Two-stage detectors have high localization and object recognition accuracy.</p>
-</blockquote>
-<ol>
-<li>The first stage, called RPN, a Region Proposal Network, proposes candidate object bounding boxes.</li>
-<li>The second stage, features are extracted by RoI Pool(RoI Pooling) operation from each candidate box for the following classification and bounding-box regression tasks .</li>
-</ol>
-<p><strong>1.3两类对比</strong></p>
-<blockquote>
-<ol>
-<li>Fig(a) shows the basic architecture of two-stage detectors.</li>
-<li>Fig(b) exhibits the basic architecture of one-stage detectors.</li>
-</ol>
-</blockquote>
-<p>Furthermore, the one-stage detectors propose predicted boxes from input images directly without region proposal step, thus they are time efficient and can be used for real-time devices.<br><img src="https://img1.imgtp.com/2022/08/29/qlYezasN.png" alt="1661761826298.png"></p>
-<h2 id="Backbone-Networks"><a href="#Backbone-Networks" class="headerlink" title="Backbone Networks"></a>Backbone Networks</h2><p>Backbone network is acting as the basic feature extractor for object detection task which takes images as input and outputs feature maps of the corresponding input image.</p>
-<p>Most of backbone networks for detection are the network for classification task taking out the last fully connected layers.</p>
-<h2 id="Typical-Baselines"><a href="#Typical-Baselines" class="headerlink" title="Typical Baselines"></a>Typical Baselines</h2><ul>
-<li><strong>Two-stage Detectors</strong><ol>
-<li>R-CNN</li>
-<li>Fast R-CNN</li>
-<li>Faster R-CNN</li>
-<li>Mask R-CNN</li>
-</ol>
-</li>
-<li><strong>One-stage Detectors</strong><ol>
-<li>YOLO series</li>
-<li>SSD</li>
-<li>DSSD</li>
-<li>RetinaNet</li>
-<li>M2Det</li>
-<li>RefineDet</li>
-</ol>
-</li>
-<li><strong>Latest Detectors</strong><ol>
-<li>Relation Networks for Object Detection</li>
-<li>DCNv2</li>
-<li>NAS-FPN</li>
-</ol>
-</li>
-</ul>
-<h2 id="Datasets-and-Metrics"><a href="#Datasets-and-Metrics" class="headerlink" title="Datasets and Metrics"></a>Datasets and Metrics</h2><ol>
-<li>PASCAL VOC dataset</li>
-<li>MS COCO benchmark</li>
-<li>ImageNet benchmark</li>
-<li>VisDrone2018 benchmark</li>
-<li>Open Images V5</li>
-<li>Pedestrian detection datasets</li>
-</ol>
-<h2 id="Analysis-of-general-image-object-detection-methods"><a href="#Analysis-of-general-image-object-detection-methods" class="headerlink" title="Analysis of general image object detection methods"></a>Analysis of general image object detection methods</h2><p>Deep neural network based object detection pipelines have four steps in general, image pre-processing, feature extraction, classification and localization, post-processing.</p>
-<ol>
-<li>Firstly, raw images from the dataset cant be fed into the network directly.<br>Therefore, we need to resize them to any special sizes and make them clearer, such as enhancing brightness, color, contrast. Data augmentation is also available to meet some requirements, such as flipping, rotation, scaling, cropping, translation, adding Gaussian noise. In addition, GANs  (generative adversarial networks) can generate new images to enrich the diversity of input according to people’s needs. For more details about data augmentation, please refer to for more details.</li>
-<li>Secondly, feature extraction is a key step for further detection.<br>The feature quality directly determines the upper bound of subsequent tasks like classification and localization.</li>
-<li>Thirdly, the detector head is responsible to propose and refine bounding box concluding classification scores and bounding box coordinates.</li>
-<li>At last, the post-processing step deletes any weak detecting results.<br>For example, NMS is a widely used method in which the highest scoring object deletes its nearby objects with inferior classification scores.</li>
-</ol>
-]]></content>
-      <categories>
-        <category>文献阅读</category>
-      </categories>
-      <tags>
-        <tag>目标检测文献综述</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>FPGA的跨时钟信号处理</title>
-    <url>/2022/09/25/FPGA%E7%9A%84%E8%B7%A8%E6%97%B6%E9%92%9F%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<p>待补充…</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>HDLBits_day1</title>
-    <url>/2022/09/29/HDLBits-day1/</url>
-    <content><![CDATA[<h1 id="HDLBits刷题"><a href="#HDLBits刷题" class="headerlink" title="HDLBits刷题"></a>HDLBits刷题</h1><h2 id="Exams-x2F-ece241-2013-q12"><a href="#Exams-x2F-ece241-2013-q12" class="headerlink" title="Exams&#x2F;ece241 2013 q12"></a><a href="https://hdlbits.01xz.net/wiki/Exams/ece241_2013_q12">Exams&#x2F;ece241 2013 q12</a></h2><p><strong>Introduction</strong><br>In this question, you will design a circuit for an 8x1 memory, where writing to the memory is accomplished by shifting-in bits, and reading is “random access”, as in a typical RAM. You will then use the circuit to realize a 3-input logic function.</p>
-<p>First, create an 8-bit shift register with 8 D-type flip-flops. Label the flip-flop outputs from Q[0]…Q[7]. The shift register input should be called S, which feeds the input of Q[0] (MSB is shifted in first). The enable input controls whether to shift. Then, extend the circuit to have 3 additional inputs A,B,C and an output Z. The circuit’s behaviour should be as follows: when ABC is 000, Z&#x3D;Q[0], when ABC is 001, Z&#x3D;Q[1], and so on. Your circuit should contain ONLY the 8-bit shift register, and multiplexers. (Aside: this circuit is called a 3-input look-up-table (LUT)).</p>
-<span id="more"></span>
-<p><strong>Module Declaration</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br></pre></td></tr></table></figure>
-<p><strong>Answer</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module top_module (</span><br><span class="line">input clk,</span><br><span class="line">input enable,</span><br><span class="line">input S,</span><br><span class="line">input A, B, C,</span><br><span class="line">output Z ); </span><br><span class="line">reg [7:0] Q;</span><br><span class="line">always@(posedge clk)begin</span><br><span class="line">    if(enable)begin</span><br><span class="line">        Q &lt;= &#123;Q[6:0],S&#125;;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">wire [2:0] sel;</span><br><span class="line">assign sel[2:0] = &#123;A,B,C&#125;;</span><br><span class="line">always @(*) begin  //组合逻辑</span><br><span class="line">    case(sel)</span><br><span class="line">        3&#x27;d0:Z &lt;= Q[0];</span><br><span class="line">        3&#x27;d1:Z &lt;= Q[1];</span><br><span class="line">        3&#x27;d2:Z &lt;= Q[2];</span><br><span class="line">        3&#x27;d3:Z &lt;= Q[3];</span><br><span class="line">        3&#x27;d4:Z &lt;= Q[4];</span><br><span class="line">        3&#x27;d5:Z &lt;= Q[5];</span><br><span class="line">        3&#x27;d6:Z &lt;= Q[6];</span><br><span class="line">        3&#x27;d7:Z &lt;= Q[7];</span><br><span class="line">    endcase</span><br><span class="line">end</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img1.imgtp.com/2022/09/29/xQqv6u1R.jpg" alt="1664454979.jpg"></p>
-]]></content>
-      <categories>
-        <category>HDLBits刷题</category>
-      </categories>
   </entry>
 </search>

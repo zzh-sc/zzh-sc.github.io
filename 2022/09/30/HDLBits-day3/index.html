@@ -21,16 +21,22 @@
     var CONFIG = {"hostname":"zzh-sc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2},"disqus":{"text":"Load Disqus","order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zhihao&#39;s Blog">
-<meta property="og:url" content="https://zzh-sc.github.io/tags/OpenWrt/index.html">
+  <meta name="description" content="Gates4DescriptionBuild a combinational circuit with four inputs, in[3:0]. There are 3 outputs: out_and: output of a 4-input AND gate.out_or: output of a 4-input OR gate.out_xor: output of a 4-input XO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDLBits-day3">
+<meta property="og:url" content="https://zzh-sc.github.io/2022/09/30/HDLBits-day3/index.html">
 <meta property="og:site_name" content="zhihao&#39;s Blog">
+<meta property="og:description" content="Gates4DescriptionBuild a combinational circuit with four inputs, in[3:0]. There are 3 outputs: out_and: output of a 4-input AND gate.out_or: output of a 4-input OR gate.out_xor: output of a 4-input XO">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/30/VxUJB7PK.jpg">
+<meta property="article:published_time" content="2022-09-30T03:18:53.000Z">
+<meta property="article:modified_time" content="2022-09-30T03:19:23.640Z">
 <meta property="article:author" content="zhihao">
 <meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2022/09/30/VxUJB7PK.jpg">
 
-<link rel="canonical" href="https://zzh-sc.github.io/tags/OpenWrt/">
+<link rel="canonical" href="https://zzh-sc.github.io/2022/09/30/HDLBits-day3/">
 
 
 <script id="page-configurations">
@@ -38,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: OpenWrt | zhihao's Blog</title>
+  <title>HDLBits-day3 | zhihao's Blog</title>
   
 
 
@@ -196,71 +202,172 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">OpenWrt
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zzh-sc.github.io/2022/09/30/HDLBits-day3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img1.imgtp.com/2022/08/11/vgbXjbVR.JPG">
+      <meta itemprop="name" content="zhihao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhihao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HDLBits-day3
+        </h1>
+
+        <div class="post-meta">
+        
+       
+		 <span class="post-time">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-30 11:18:53 / 修改时间：11:19:23" itemprop="dateCreated datePublished" datetime="2022-09-30T11:18:53+08:00">2022-09-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HDLBits%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">HDLBits刷题</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h1 id="Gates4"><a href="#Gates4" class="headerlink" title="Gates4"></a>Gates4</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Build a combinational circuit with four inputs, in[3:0].</p>
+<p>There are 3 outputs:</p>
+<p>out_and: output of a 4-input AND gate.<br>out_or: output of a 4-input OR gate.<br>out_xor: output of a 4-input XOR gate.<br>To review the AND, OR, and XOR operators, see andgate, norgate, and xnorgate.</p>
+<h2 id="Module-Declaration"><a href="#Module-Declaration" class="headerlink" title="Module Declaration"></a>Module Declaration</h2><pre><code>module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+</code></pre><h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><pre><code>module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+    assign out_and = in[3]&amp;in[2]&amp;in[1]&amp;in[0]; //多位与
+    assign out_or = in[3]|in[2]|in[1]|in[0];  //多位或
+    assign out_xor = ^in;  //多位异或
+endmodule
+</code></pre><p><img src="https://img1.imgtp.com/2022/09/30/VxUJB7PK.jpg" alt="1664504182.jpg"></p>
+<p><strong>异或运算⊕</strong>:两个逻辑变量相异为1，相同为0，$ F = A⊕B  = A·B’ + A’· B$。</p>
+<p><strong>多异或连续运算</strong>：将前两个数的运算结果，与第三个数继续运算；再将结果与第四个运算；直到最后得出结果，其中的每一步都要按照相应运算的规则进行。</p>
+<pre><code>1⊕0⊕1⊕1⊕1=0
+1⊕0⊕1⊕0⊕1=1
+0⊕0⊕1⊕0=1
+0⊕1⊕1⊕0=0
+</code></pre><ol>
+<li>若含“奇数”个“真命题（1）”，则结果为“真（1）”；</li>
+<li>若含“偶数”个“真命题（1）”，则结果为“假（0）”；（注：零个也是偶数个）</li>
+</ol>
+<p><strong>同或运算⊙</strong>：两个逻辑变量相异为0，相同为1,$ F = A⊙B  = A·B + A’· B’ $。<br><strong>多同或连续运算</strong>：$ a ⊙ 1 = a; a⊙ 0⊙ 0 = a $ 。同或运算就是观察输入中0的个数。奇数个0则结果为0，偶数个0则结果为1。</p>
+<p><strong>归约操作</strong>：</p>
+<ol>
+<li>归约与（&amp;）：全部是一。</li>
+<li>归约与非（~&amp;）：有一个零。</li>
+<li>归约或（|）：有一个一。</li>
+<li>归约或非（~|）：全部是零。</li>
+<li>归约异或（^）：一的个数是奇数。</li>
+<li><p>归约同或（~^）：一的个数是偶数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = 4&#x27;b1010 ;</span><br><span class="line">&amp;A ;      //结果为 1 &amp; 0 &amp; 1 &amp; 0 = 1&#x27;b0，可用来判断变量A是否全1</span><br><span class="line">~|A ;     //结果为 ~(1 | 0 | 1 | 0) = 1&#x27;b0, 可用来判断变量A是否为全0</span><br><span class="line">^A ;      //结果为 1 ^ 0 ^ 1 ^ 0 = 1&#x27;b0</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1></li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44985880/article/details/107895486">多异或”和“多同或”连续运算问题</a></p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36613247/article/details/125511260">verilog 归约操作符</a></li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-18T19:59:34+08:00"
-              content="2022-09-18">
-          09-18
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>zhihao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zzh-sc.github.io/2022/09/30/HDLBits-day3/" title="HDLBits-day3">https://zzh-sc.github.io/2022/09/30/HDLBits-day3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/18/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E7%BC%96%E8%AF%91OpenWrt%E5%9B%BA%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">为树莓派3B+编译OpenWrt固件</span>
-          </a>
-      </div>
 
-    </header>
-  </article>
+      <footer class="post-footer">
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-18T13:40:21+08:00"
-              content="2022-09-18">
-          09-18
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/18/OpenWrt%E7%B3%BB%E7%BB%9F%E7%BC%96%E8%AF%91/" itemprop="url">
-            <span itemprop="name">OpenWrt系统编译</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/30/HDLBits-day2/" rel="prev" title="HDLBits-day2">
+      <i class="fa fa-chevron-left"></i> HDLBits-day2
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
@@ -313,6 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gates4"><span class="nav-number">1.</span> <span class="nav-text">Gates4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module-Declaration"><span class="nav-number">1.2.</span> <span class="nav-text">Module Declaration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Answer"><span class="nav-number">1.3.</span> <span class="nav-text">Answer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
