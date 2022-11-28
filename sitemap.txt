@@ -1,3 +1,4 @@
+https://zzh-sc.github.io/about/index.html
 https://zzh-sc.github.io/2022/09/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/
 https://zzh-sc.github.io/2022/10/03/National-Day/
 https://zzh-sc.github.io/2022/09/30/HDLBits-day3/
@@ -19,7 +20,6 @@ https://zzh-sc.github.io/2022/08/11/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/
 https://zzh-sc.github.io/2022/08/22/Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E5%92%8C%E4%B8%8D%E5%8F%AF%E7%BB%BC%E5%90%88%E8%AF%AD%E5%8F%A5/
 https://zzh-sc.github.io/categories/index.html
 https://zzh-sc.github.io/tags/index.html
-https://zzh-sc.github.io/about/index.html
 https://zzh-sc.github.io/
 https://zzh-sc.github.io/tags/%E4%BB%8A%E6%97%A5%E5%BF%83%E6%83%85/
 https://zzh-sc.github.io/tags/OpenWrt/
